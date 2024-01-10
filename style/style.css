@@ -1,0 +1,229 @@
+@import url(reset.css);
+@import url(common.css);
+@import url(responsive.css);
+
+/*----------- MAIN ------------*/
+section {
+    width: 100%;
+    padding: 32px 20px 108px;
+}
+
+section.active {
+    height: 100vh;
+}
+
+section .list-none {
+    text-align: center;
+    font-size: 2em;
+    padding: 50px 0;
+    display: none;
+}
+
+.card-inner ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+
+.card-inner ul li {
+    width: 350px;
+    height: 500px;
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+    margin-top: 30px;
+    position: relative;
+    perspective: 10000px;
+}
+
+.card-inner ul li a{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0; 
+    top:0;
+    transition: 1s;
+    transform-style: preserve-3d;
+}
+
+.card-inner ul li:hover a{
+    transform:rotateY(180deg);
+}
+
+.card-inner ul li .side {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    transition: 1s;
+    backface-visibility: hidden;
+    border-radius: 10px;
+}
+
+.card-inner ul li .back {
+    background: #f0f0f0;
+    text-align: center;
+    line-height: 40px;
+    transform: rotateY(180deg);
+    font-size: var(--font-size-title);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+    flex-direction: column;
+    padding: 0 20px;
+}
+
+.card-inner ul li .review{
+    font-size: 16px;
+    color: var(--blue-color);
+}
+
+.card-inner ul li .review i{
+    color: var(--blue-color);
+}
+
+.card-inner ul li a img {
+    object-fit: cover;
+    width: 100%;
+    height: 500px;
+}
+
+.card-title-list {
+    padding: 15px 20px 30px;
+}
+
+.card-title-list h2,
+.card-title-list p.average {
+    font-size: var(--font-size-sub);
+    line-height: 32px;
+    margin-bottom: 10px;
+    font-family: 'seolleimcool-SemiBold';
+}
+
+.card-title-list p {
+    font-size: 14px;
+}
+
+.card-title-list p.average {
+    font-size: 16px;
+    color: var(--blue-color);
+}
+
+/* modal */
+.modal-wrap {
+    position: fixed;
+    background-color: rgba(0, 0, 0, .8);
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+}
+
+.modal-wrap .modal {
+    max-width: 90%;
+    height: fit-content;
+    background-color: #fff;
+    position: relative;
+    padding: 50px 120px 50px 50px;
+    transform: translateY(100vh);
+}
+
+.modal-wrap .modal.active {
+    animation: modalup .3s .3s forwards;
+}
+
+.modal-wrap .close-btn {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    border: none;
+    background-color: transparent;
+    font-size: var(--font-size-title);
+    cursor: pointer;
+}
+
+.modal-wrap .close-btn:hover {
+    color: var(--blue-color);
+}
+
+.card-ids {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    align-items: center;
+}
+
+.card-ids img {
+    width: 300px;
+}
+
+.movie-id-list h2 {
+    font-family: 'seolleimcool-SemiBold';
+}
+
+.movie-id-list p span {
+    display: inline-block;
+    font-size: var(--font-size-sub);
+    color: var(--blue-color);
+}
+
+/*----------- REVIEW.html ------------*/
+.movies-detail{
+    padding: 80px 0 108px;
+}
+.movies-detail-list{
+    display: flex;
+    justify-content: center;
+    gap: 200px;
+}
+
+.poster-img{
+    width: 350px;
+    overflow: hidden;
+}
+
+.poster-img img{
+    object-fit: cover;
+    width: inherit;
+}
+
+.movies-content{
+    box-sizing: border-box;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.movies-content h2{
+    font-size: var(--font-size-title);
+    margin-bottom: 10px;
+}
+
+.movies-review .movies-review-inner{
+    width: 1280px;
+    margin: 0 auto;
+}
+
+/* animation */
+@keyframes modalup {
+    from {
+        transform: translateY(100vh);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
