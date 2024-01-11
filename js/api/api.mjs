@@ -7,7 +7,6 @@ async function getTopRatedMovieArray(page) {
     let result;
     let movie = {};
     let movieArray = [];
-    // const languageArray = await getLanguageArray();
     const genreArray = await getGenreArray();
 
     const options = {
@@ -35,13 +34,8 @@ async function getTopRatedMovieArray(page) {
                 }
             }
         }
-
-        // for (let i = 0; i < languageArray.length; i++) {
-        //     if (movie['originalLanguage'] === languageArray[i]['iso_639_1']) {
-        //         movie['originalLanguage'] = languageArray[i]['english_name'];
-        //     }
-        // }
-
+        if (!isoCode[movie['original_language']])
+            return;
 
         movie['original_language'] = isoCode[movie['original_language']];
 
@@ -504,6 +498,6 @@ async function getSearchArray(keyword, page) {
 
 async function test() {
     //console.log(await getGenreArray());
-    await getSearchArray('기생충', 1);
+    await getTopRatedMovieArray(1);
 }
 test();
