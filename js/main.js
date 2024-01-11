@@ -1,5 +1,6 @@
+// 임시변경) 40번째 줄 href: "#" ==> href="html/movie_review.html"
+
 /* api 불러오기 */
-//test
 const options = {
   method: "GET",
   headers: {
@@ -45,10 +46,7 @@ function showMovies(data) {
 				</a>
 			</li>
     		`;
-    //해석: movieList의 요소의 마지막 줄에 temp_html 추가하기
-    //insertAdjacentHTML(첫 번째 매개변수: HTML을 삽입할 위치를 지정합니다.
-    //beforeend'는 해당 요소의 자식으로, 마지막 자식 요소 뒤에 HTML을 추가
-    //중복 클래스 존재 시  중첩 적용된다.
+
     movieList.insertAdjacentHTML("beforeend", temp_html);
   }
 }
