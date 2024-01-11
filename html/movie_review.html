@@ -53,26 +53,67 @@
         <section class="movies-review">
             <div class="movies-review-inner">
                 <form>
-                    <div class="movies-review">
-                        <p>
-                            <label for="">이름</label>
-                            <input type="text">
-                        </p>
-                        <p>
-                            <label for="">암호</label>
-                            <input type="password">
-                        </p>
-                        <p>
+                    <div class="review-write">
+                        <div class="review-write-inner">
+                            <div class="grade">
+                                <p>평점</p>
+                                <p class="star">
+                                    <i class="rating__star far fa-star"></i>
+                                    <i class="rating__star far fa-star"></i>
+                                    <i class="rating__star far fa-star"></i>
+                                    <i class="rating__star far fa-star"></i>
+                                    <i class="rating__star far fa-star"></i>
+                                </p>
+                            </div>
                             <textarea></textarea>
                             <button>관람평 등록</button>
-                        </p>
-                        <div class="">
-                            <p>평점</p>
-                            <button>수정</button>
-                            <button>삭제</button>
+                        </div>
+                        <div>
+                            <p>
+                                <label for="user-name">이름</label>
+                                <input type="text" id="user-name">
+                            </p>
+                            <p>
+                                <label for="pw">암호</label>
+                                <input type="password" id="pw" maxlength="15">
+                            </p>
                         </div>
                     </div>
                 </form>
+                <div class="user-review">
+                    <ul class="user-review-inner">
+                        <li class="user-review-list">
+                            <div class="">
+                                <h3>해피</h3>
+                                <p class="star user-star">
+                                    <i class="rating__star far fa-star"></i>
+                                    <i class="rating__star far fa-star"></i>
+                                    <i class="rating__star far fa-star"></i>
+                                    <i class="rating__star far fa-star"></i>
+                                    <i class="rating__star far fa-star"></i>
+                                </p>
+                            </div>
+                            <div class="user-review-txt">
+                                <p>별로임 보지마셈</p>
+                                <div class="">
+                                    <button>수정</button>
+                                    <button>삭제</button>
+                                </div>
+                            </div>
+                            <div class="user-pw-revise">
+                                <form>
+                                    <p>
+                                        <label for="user-pw">비밀번호입력 : </label>
+                                        <input type="password" id="user-pw" maxlength="15">
+                                        <button>확인</button>
+                                    </p>
+                                    <!-- 폼벨리데이션 -->
+                                    <p>비밀번호가 틀립니다.</p>
+                                </form>
+                            </div>
+                        </li>
+                    </ul>    
+                </div>
             </div>
         </section>
     </main>
