@@ -1,7 +1,6 @@
-let data = {
-  a: "/Users/t2023-m0063/Downloads/oMTuRG8koeKqH2tVonaWhyp7OBw.jpg",
-  b: 20
-};
+//api 값 가져오기
+
+
 
 
 
