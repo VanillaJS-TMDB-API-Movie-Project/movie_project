@@ -1,4 +1,4 @@
-export let isoCode = {
+const isoCode = {
     'af': '아프리칸스어',
     'als': '알자스어',
     'ar': '아랍어',

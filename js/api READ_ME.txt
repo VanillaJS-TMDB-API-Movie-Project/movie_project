@@ -61,54 +61,53 @@ vote_count : 총 투표 수
 
 [캐스트] - getCastArray
 adult: 성인인지 여부(boolena 값)
-gender: 2, 성별(1:여성, 2:남성)
+gender: 성별(1:여성, 2:남성)
 id: 504, 
-known_for_department: //알려진 캐스트 직업
-name": Tim Robbins", //캐스트 이름
-original_name: "Tim Robbins", //캐스트 본명
-popularity: 32.288, //인기도
-profile_path: "/A4fHNLX73EQs78f2G6ObfKZnvp4.jpg", //프로필 이미지
-cast_id: 3, // 모르겠음
-character: "Andy Dufresne", //배역
-credit_id: "52fe4231c3a36847f800b131",
-order: 0
+known_for_department: 알려진 캐스트 직업
+name": 캐스트 이름
+original_name: 캐스트 본명
+popularity: 인기도
+profile_path: 프로필 이미지
+cast_id: 모르겠음
+character: 배역
+credit_id: // 모르겠음
+order: // 캐스트 중 순서(몇 번째 캐스트인지)
 
 [크루] - getCrewArray
 adult: false,
-gender: '남성', //성별
+gender: 성별
 id: 154,
-known_for_department: 'Editing', //알려진 직업
-name: 'Walter Murch', //이름
-original_name: 'Walter Murch',//본명
-popularity: 6.021, //인기도
-profile_path: 'https://image.tmdb.org/t/p/original//kQh7U7kRLF9NKEMpxiGjZEIu0o3.jpg', //프로필 사진
-credit_id: '62bd43fb63d9370092ba09da',
-department: 'Crew', //부서
-job: 'Post Production Consulting' //직업
+known_for_department: 알려진 직업
+name: 이름
+original_name: 본명
+popularity: 인기도
+profile_path: 프로필 사진
+credit_id: // 모르겠음
+department: 부서
+job: 직업
 
 [지원 id] - getSupportedArray
 {
-id: 238, // 영화 id
-imdb_id: // imdb id
-wikidata_id: // 위키피디아 id
-facebook_id: // 페이스북 id
-instagram_id: // 인스타그램 id
-twitter_id: // 트위터 id
+id:  영화 id
+imdb_id: imdb id
+wikidata_id: 위키피디아 id
+facebook_id: 페이스북 id
+instagram_id: 인스타그램 id
+twitter_id: 트위터 id
 }
 
 [배경 이미지] - getBackDropArray
-aspect_ratio: //가로 세로 비율
-height:  //높이
-iso_639_1:  //언어
-file_path: //파일 이미지 경로
-vote_average: // 평점
-vote_count: // 투표수
-width: // 가로
-*영어 한글로 바꾸는거 최적화 시도
+aspect_ratio: 가로 세로 비율
+height:  높이
+iso_639_1:  언어
+file_path: 파일 이미지 경로
+vote_average:  평점
+vote_count:  투표수
+width:  가로
 
 [키워드] - getKeywordArray
-id: // 키워드 고유 id
-name: // 키워드
+id:  키워드 고유 id
+name:  키워드
 
 [추천 영화] - getRecommendationArray
 adult : 성인인지 여부(boolena 값)
@@ -143,16 +142,16 @@ vote_average : 평점
 vote_count : 총 투표 수
 
 [관련 영상] - getVideoArray
-iso_639_1: // 언어
-iso_3166_1: // 나라
-name: // 제목
-key:  // 유튜브 링크 watch?v= 뒤에 붙이면 재생 됨
-site: 'YouTube' // 유튜브
-size: //해상도
-type: // 영상 종류(클립, 트레일러)
-official: // 공식여부
-published_at: //업로드 날짜
-id: '656b9c210859b400ff7519bc // 고유 값
+iso_639_1: 언어
+iso_3166_1: 나라
+name:  제목
+key:   유튜브일 경우, 유튜브 링크 watch?v= 뒤에 붙이면 재생 됨
+site:  유튜브
+size: 해상도
+type:  영상 종류(클립, 트레일러)
+official:  공식여부
+published_at: 업로드 날짜
+id:  고유 값
 
 [검색한 영화] - getSearchArray
 adult : 성인인지 여부(boolena 값)
@@ -171,6 +170,7 @@ vote_average : 평점
 vote_count : 총 투표 수
 
 <참고>
+-국가 코드 부분 최적화 할 것
+-국가 코드 따로 빼놓기
 -값 받아올 때, NULL 반드시 체크할 것
 -유명한 영화나 사용자가 많은 언어(영어)는 자료가 많으나 인기가 없는 영화이거나 많이 사용되지 않는 언어는 데이터가 없을수 있음
--모듈(import, export) 작동 않함, 이유 알아보기
