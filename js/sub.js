@@ -17,7 +17,7 @@ userGrade.addEventListener('click', function (e) {
     const timeStamp = new Date().getTime();
     // console.log(timeStamp);
 
-    // 입력된 값을 객체로 저장
+    // 입력된 값을 객체로 저장"
     const userData = {
         user : userNameResult,
         content : userTextResult,
