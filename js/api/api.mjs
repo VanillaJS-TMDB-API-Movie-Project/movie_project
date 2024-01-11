@@ -34,10 +34,9 @@ async function getTopRatedMovieArray(page) {
                 }
             }
         }
-        if (!isoCode[movie['original_language']])
-            return;
-
-        movie['original_language'] = isoCode[movie['original_language']];
+        if (!isoCode[movie['original_language']]) {
+            movie['original_language'] = isoCode[movie['original_language']];
+        }
 
         movieArray.push(movie);
     }
@@ -86,32 +85,10 @@ async function getCountryArray() {
     return result;
 }
 
-// 나라별 언어이름 iso_639_1 code 모음(iso_639_1 - 영어 - 현지어) - https://developer.themoviedb.org/reference/configuration-languages
-// async function getLanguageArray() {
-//     let result;
-
-//     const options = {
-//         method: 'GET',
-//         headers: {
-//             accept: 'application/json',
-//             Authorization: config.APIKey
-//         }
-//     };
-
-//     result = await fetch('https://api.themoviedb.org/3/configuration/languages', options)
-//         .then(response => response.json())
-//         .then(response => response)
-//         .catch(err => console.error(err));
-
-//     console.log(result);
-//     return result;
-// }
-
 // 해당 영화 상세정보 - https://developer.themoviedb.org/reference/movie-details
 async function getDetailedMovie(id) {
     let result;
     let movie = {};
-    // const languageArray = await getLanguageArray();
     const genreArray = await getGenreArray();
     const countryArray = await getCountryArray();
 
@@ -164,6 +141,10 @@ async function getDetailedMovie(id) {
             }
         }
         for (let i = 0; i < movie['spoken_languages'].length; i++) {
+            if (!isoCode[movie['spoken_languages'][i]['iso_639_1']]) {
+                continue;
+            }
+
             movie['spoken_languages'][i] = isoCode[movie['spoken_languages'][i]['iso_639_1']];
         }
 
@@ -208,8 +189,6 @@ async function getCastArray(id) {
         castArray.push(cast);
     }
 
-    console.log(castArray);
-
     return castArray;
 }
 
@@ -245,8 +224,6 @@ async function getCrewArray(id) {
         }
         crewArray.push(crew);
     }
-
-    console.log(crewArray);
 
     return crewArray;
 }
@@ -294,7 +271,6 @@ async function getBackDropArray(id) {
         backDrop['iso_639_1'] = '영어';
         backDrop['file_path'] = 'https://image.tmdb.org/t/p/original/' + result[i]['file_path'];
 
-        console.log(backDrop);
         backDropArray.push(backDrop);
     }
     return backDropArray;
@@ -316,7 +292,6 @@ async function getKeywordArray(id) {
         .then(response => response['keywords'])
         .catch(err => console.error(err));
 
-    console.log(result);
     return result;
 }
 
@@ -325,7 +300,6 @@ async function getRecommendationArray(id, page) {
     let result;
     let recommendation = {};
     let recommendationArray = [];
-    // const languageArray = await getLanguageArray();
     const genreArray = await getGenreArray();
 
     const options = {
@@ -353,15 +327,10 @@ async function getRecommendationArray(id, page) {
                 }
             }
         }
+        if (isoCode[recommendation['original_language']]) {
+            recommendation['original_language'] = isoCode[recommendation['original_language']];
+        }
 
-        // for (let i = 0; i < languageArray.length; i++) {
-        //     if (movie['originalLanguage'] === languageArray[i]['iso_639_1']) {
-        //         movie['originalLanguage'] = languageArray[i]['english_name'];
-        //     }
-        // }
-
-
-        recommendation['original_language'] = isoCode[recommendation['original_language']];
 
         recommendationArray.push(recommendation);
     }
@@ -374,7 +343,6 @@ async function getSimilarArray(id, page) {
     let result;
     let similar = {};
     let similarArray = [];
-    // const languageArray = await getLanguageArray();
     const genreArray = await getGenreArray();
 
     const options = {
@@ -403,18 +371,13 @@ async function getSimilarArray(id, page) {
             }
         }
 
-        // for (let i = 0; i < languageArray.length; i++) {
-        //     if (movie['originalLanguage'] === languageArray[i]['iso_639_1']) {
-        //         movie['originalLanguage'] = languageArray[i]['english_name'];
-        //     }
-        // }
-
-
-        similar['original_language'] = isoCode[similar['original_language']];
+        if (isoCode[similar['original_language']]) {
+            similar['original_language'] = isoCode[similar['original_language']];
+        }
 
         similarArray.push(similar);
     }
-    console.log(similarArray);
+
     return similarArray;
 }
 
@@ -452,7 +415,6 @@ async function getSearchArray(keyword, page) {
     let result;
     let search = {};
     let searchArray = [];
-    // const languageArray = await getLanguageArray();
     const genreArray = await getGenreArray();
 
     const options = {
@@ -480,15 +442,9 @@ async function getSearchArray(keyword, page) {
                 }
             }
         }
-
-        // for (let i = 0; i < languageArray.length; i++) {
-        //     if (movie['originalLanguage'] === languageArray[i]['iso_639_1']) {
-        //         movie['originalLanguage'] = languageArray[i]['english_name'];
-        //     }
-        // }
-
-
-        search['original_language'] = isoCode[search['original_language']];
+        if (isoCode[search['original_language']]) {
+            search['original_language'] = isoCode[search['original_language']];
+        }
 
         searchArray.push(search);
     }
@@ -496,8 +452,8 @@ async function getSearchArray(keyword, page) {
     return searchArray;
 }
 
+// api 테스트용 메서드
 async function test() {
-    //console.log(await getGenreArray());
     await getTopRatedMovieArray(1);
 }
 test();
