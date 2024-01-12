@@ -99,7 +99,7 @@ function setMovies() { // 제대로 작동 안함, 이유를 모르겠음, 안�
     console.log($titles); //고쳐서 콘솔로 찍어봤는데 뭔가 오류떠서 확인을 할수가 없어요.... - park
     for (let i = 0; i < movieArray.length; i++) {
         $posterImages[i].setAttribute('src', movieArray[i]['poster_path']);
-        $titles[i].value = movieArray[i]['title']; //주석처리한거 다시 했습니다 - Park
+        $titles[i].value = movieArray[i]['title']; //주석처리한거 다시 빼서 확인해봤습니다 - Park
         $cards[i].style.display = "block";
     }
 
