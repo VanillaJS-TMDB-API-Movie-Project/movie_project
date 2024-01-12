@@ -3,7 +3,7 @@ import { isoCode } from './isoCode.mjs';
 const TMDB_API = config.APIKey;
 
 // 레이팅 순위로 정렬된 영화 목록(내림차순) - https://developer.themoviedb.org/reference/movie-top-rated-list
-async function getTopRatedMovieArray(page) {
+export async function getTopRatedMovieArray(page) {
     let result;
     let movie = {};
     let movieArray = [];
@@ -34,18 +34,17 @@ async function getTopRatedMovieArray(page) {
                 }
             }
         }
-        if (!isoCode[movie['original_language']]) {
+        if (isoCode[movie['original_language']]) {
             movie['original_language'] = isoCode[movie['original_language']];
         }
 
         movieArray.push(movie);
     }
-    console.log(movieArray);
     return movieArray;
 }
 
 // 장르 id - 한국어 모음 - https://developer.themoviedb.org/reference/genre-movie-list
-async function getGenreArray() {
+export async function getGenreArray() {
     let result;
 
     const options = {
@@ -66,7 +65,7 @@ async function getGenreArray() {
 }
 
 // 나라별 나라이름 iso_3166_1 code 모음(iso_3166_1, 영어, 한국어) - https://developer.themoviedb.org/reference/configuration-countries
-async function getCountryArray() {
+export async function getCountryArray() {
     let result;
 
     const options = {
@@ -86,7 +85,7 @@ async function getCountryArray() {
 }
 
 // 해당 영화 상세정보 - https://developer.themoviedb.org/reference/movie-details
-async function getDetailedMovie(id) {
+export async function getDetailedMovie(id) {
     let result;
     let movie = {};
     const genreArray = await getGenreArray();
@@ -157,7 +156,7 @@ async function getDetailedMovie(id) {
 }
 
 // 해당 영화 캐스트 모음 - https://developer.themoviedb.org/reference/movie-details
-async function getCastArray(id) {
+export async function getCastArray(id) {
     // https://developer.themoviedb.org/reference/movie-credits
     let result;
     let cast = {};
@@ -193,7 +192,7 @@ async function getCastArray(id) {
 }
 
 // 해당 영화 크루 모음 - https://developer.themoviedb.org/reference/movie-details
-async function getCrewArray(id) {
+export async function getCrewArray(id) {
     // https://developer.themoviedb.org/reference/movie-credits
     let result;
     let crew = {};
@@ -229,7 +228,7 @@ async function getCrewArray(id) {
 }
 
 // 해당 영화 홍보 SNS, 미디어 데이터베이스 id(IMDb,	Wikidata, Facebook, Instagram, Twitter) - https://developer.themoviedb.org/reference/movie-external-ids
-async function getSupportedArray(id) {
+export async function getSupportedArray(id) {
     let result;
 
     const options = {
@@ -249,7 +248,7 @@ async function getSupportedArray(id) {
 }
 
 // 해당 영화 배경 이미지 모음(포스터도 있음, 포스터 필요하면 추가 가능, 다른 나라 언어는 양이 적어서 영어로 설정) - https://developer.themoviedb.org/reference/movie-images
-async function getBackDropArray(id) {
+export async function getBackDropArray(id) {
     let result;
     let backDrop = {};
     let backDropArray = [];
@@ -277,7 +276,7 @@ async function getBackDropArray(id) {
 }
 
 // 해당 영화 관련 키워드 모음(해쉬 태그랑 비슷한 듯) - https://developer.themoviedb.org/reference/movie-keywords
-async function getKeywordArray(id) {
+export async function getKeywordArray(id) {
     let result;
     const options = {
         method: 'GET',
@@ -296,7 +295,7 @@ async function getKeywordArray(id) {
 }
 
 // 해당 영화 관련 추천 영화 모음 - https://developer.themoviedb.org/reference/movie-recommendations
-async function getRecommendationArray(id, page) {
+export async function getRecommendationArray(id, page) {
     let result;
     let recommendation = {};
     let recommendationArray = [];
@@ -339,7 +338,7 @@ async function getRecommendationArray(id, page) {
 }
 
 // 해당 영화 관련 비슷한 영화 모음 - https://developer.themoviedb.org/reference/movie-similar
-async function getSimilarArray(id, page) {
+export async function getSimilarArray(id, page) {
     let result;
     let similar = {};
     let similarArray = [];
@@ -382,7 +381,7 @@ async function getSimilarArray(id, page) {
 }
 
 // 해당 영화 관련 영상(트레일러, 클립 등) 모음 (한국은 양이 적어서 영어로 설정) - https://developer.themoviedb.org/reference/movie-videos
-async function getVideoArray(id) {
+export async function getVideoArray(id) {
     let result;
     let video = {};
     let videoArray = [];
@@ -411,7 +410,7 @@ async function getVideoArray(id) {
 }
 
 // 해당 영화 관련 영상(트레일러, 클립 등) 태그 모음 (한국은 양이 적어서 영어로 설정) - 위의 getVideoArray 메서드 이용함
-async function getVideoTagArray(id, width, height) {
+export async function getVideoTagArray(id, width, height) {
     let videoArray = await getVideoArray(id);
     let videoTag = '';
     let videoTagArray = [];
@@ -426,7 +425,7 @@ async function getVideoTagArray(id, width, height) {
 }
 
 // 영화 검색 (키워드로 검색 제목이나 요약 등 해당하는 키워드가 포함되면 가져옴) 모음 (한국어 기반, 언어는 변경 가능) - https://developer.themoviedb.org/reference/search-movie
-async function getSearchArray(keyword, page) {
+export async function getSearchArray(keyword, page) {
     let result;
     let search = {};
     let searchArray = [];
@@ -469,6 +468,5 @@ async function getSearchArray(keyword, page) {
 
 // api 테스트용 메서드
 async function test() {
-    await getVideoTagArray(278, 300, 300);
+    await getGenreArray();
 }
-test();
