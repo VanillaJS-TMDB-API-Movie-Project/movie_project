@@ -154,7 +154,7 @@ userList.addEventListener('click', function (e) {
             const myKey = userReviseBtn.getAttribute('data-key');
             const yourDataPw = JSON.parse(localStorage.getItem(myKey)); //다시 객체로 불러옴
             yourPasswordForm.classList.add('active');
-            //비밀번호 확인 버튼을 클릭할때 수정텍스트 나오고 아니면 다시 비번틀렸다고 해~
+            //비밀번호 확인 버튼을 클릭할때 수정텍스트 나오고 아니면 다시 비번틀렸다고 나옴
             yourPassWordReBtn.addEventListener('click',function(e){
                 e.preventDefault();
                 yourPassWordBtn.classList.add('active');
@@ -170,8 +170,7 @@ userList.addEventListener('click', function (e) {
                     yourReviseBtn.style.display="block";
                     yourCancelBtn.style.display="block";
 
-
-                    //만약에 사용자가 수정한 값이랑 안에 있는거 대치
+                    //만약에 사용자가 수정한 값이랑 맞으면 안에 있는거 대치
                     yourReviseBtn.addEventListener('click',function(e){
                         e.preventDefault();
                         const yourReviseTextResult = yourReviseText.value; //값 가지고왔음
@@ -195,15 +194,11 @@ userList.addEventListener('click', function (e) {
                         allUserData(); //바꿨으니 새로 갱신됨
                     });
                 }else{
-                    //틀렸으니까 틀렸다고 띄워!!
+                    //틀렸으니까 틀렸다고 띄움
                     validation.classList.add('error');
                     yourReviseText.classList.remove('active'); 
                 }
             });
-
-
-            //다시 수정버튼을 누르면 수정이 되는결과값을 출력해둠.
-            //만약에 비밀번호가 틀리면? 비밀번호가 틀렸다는 벨리데이션을 보여줌
         }
     }
 });
