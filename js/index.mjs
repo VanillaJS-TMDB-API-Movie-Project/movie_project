@@ -63,12 +63,22 @@ function makeCards() {
     while ($cardList.firstChild) {
         $cardList.firstChild.remove()
     }
-    for (let i = 0; i < 20; i++) { //poster_path 들어가는 이미지 영하 검색했을 때 이미지가 없을 수도 있음, alt 이미지 확보할 것
+    //poster_path 들어가는 이미지 영하 검색했을 때 이미지가 없을 수도 있음, alt 이미지 확보할 것
+    //편의 상버튼 아래로 이동시킴, 디자인 수정해야 함
 
+    for (let i = 0; i < 20; i++) {
+        let url = new URL(window.location.href);
+        let urlParameter = new URLSearchParams(url.search);
+        urlParameter.set('id', movieArray[i]['id']);
+
+        // let url = new URL(window.location.href);
+        // let urlParameter = new URLSearchParams(url.search);
+        // console.log(urlParameter.get('id'));
+        // 위 코드 sub에 붙여넣기
 
         let tag = `
     <li class="movie-list" data-id="${i}">
-        <a href="html/movie_review.html?id=${movieArray[i]['id']}">
+        <a href="html/movie_review.html?${urlParameter.toString()}">
             <div class="side">
                 <img src="${movieArray[i]['poster_path']}" alt="">
             </div>
@@ -85,7 +95,7 @@ function makeCards() {
 function setMovies() { // 제대로 작동 안함, 이유를 모르겠음, 안돼면 튜터님께 질문해야 함
     let $cards = document.querySelectorAll('.movie-list');
     let $posterImages = document.querySelectorAll('li > a > div > img');
-    let $titles = document.querySelectorAll('#movieTitle'); //무슨 태그인지 모르겠음
+    let $titles = document.querySelectorAll('#movieTitle'); //태그 어떡해 써야할지 모르겠음
 
     for (let i = 0; i < movieArray.length; i++) {
         $posterImages[i].setAttribute('src', movieArray[i]['poster_path']);
