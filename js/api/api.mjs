@@ -410,6 +410,21 @@ async function getVideoArray(id) {
     return videoArray;
 }
 
+// 해당 영화 관련 영상(트레일러, 클립 등) 태그 모음 (한국은 양이 적어서 영어로 설정) - 위의 getVideoArray 메서드 이용함
+async function getVideoTagArray(id, width, height) {
+    let videoArray = await getVideoArray(id);
+    let videoTag = '';
+    let videoTagArray = [];
+
+    for (let i = 0; i < videoArray.length; i++) {
+        if (videoArray[i]['site'] === 'YouTube')
+            videoTag = `<embed type="text/html" src="https://www.youtube.com/embed/${videoArray[i]['key']}" width="${width}" height="${height}">`;
+        videoTagArray.push(videoTag);
+    }
+
+    return videoTagArray;
+}
+
 // 영화 검색 (키워드로 검색 제목이나 요약 등 해당하는 키워드가 포함되면 가져옴) 모음 (한국어 기반, 언어는 변경 가능) - https://developer.themoviedb.org/reference/search-movie
 async function getSearchArray(keyword, page) {
     let result;
@@ -454,6 +469,6 @@ async function getSearchArray(keyword, page) {
 
 // api 테스트용 메서드
 async function test() {
-    await getTopRatedMovieArray(1);
+    await getVideoTagArray(278, 300, 300);
 }
 test();
