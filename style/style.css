@@ -212,10 +212,35 @@ section .list-none {
     margin-bottom: 10px;
 }
 
+.user-pw-revise,
+.validation,
+.revise-text,
+#user-re,
+#user-cancel{
+    display: none;
+}
+
+.user-review-txt .validation.re-content-vali.error,
+.user-pw-revise.active .validation.re-password.error,
+.review-write-inner .user-txt.error,
+.review-user-form .validation.valiname.error,
+.user-pw-revise .valipw.error,
+.validation.valipw.error,
+.revise-text.active,
+.user-pw-revise.active,
+#user-re.active,
+#user-cancel.active,
+#user-revise.active,
+#user-del.active{
+    display: block;
+}
+
 .movies-review .movies-review-inner{
     width: 1280px;
     margin: 0 auto;
 }
+
+
 
 /* animation */
 @keyframes modalup {
