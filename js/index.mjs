@@ -77,17 +77,17 @@ function makeCards() {
         // 위 코드 sub에 붙여넣기
 
         let tag = `
-    <li class="movie-list" data-id="${i}">
-        <a href="html/movie_review.html?${urlParameter.toString()}">
-            <div class="side">
-                <img src="${movieArray[i]['poster_path']}" alt="">
-            </div>
-            <div class="side back">
-                <p id='movieTitle'>${movieArray[i]['title']}</p>
-            <p class="review"> 자세히보기 <i class="fa-solid fa-angle-right"></i ></p >
-            </div >
-        </a >
-    </li > `;
+                <li class="movie-list" data-id="${i}">
+                    <a href="html/movie_review.html?${urlParameter.toString()}">
+                        <div class="side">
+                            <img src="${movieArray[i]['poster_path']}" alt="">
+                        </div>
+                        <div class="side back">
+                            <p class="movies-title">${movieArray[i]['title']}</p>
+                        <p class="review"> 자세히보기 <i class="fa-solid fa-angle-right"></i></p>
+                        </div>
+                    </a>
+                </li> `;
         $cardList.insertAdjacentHTML('beforeend', tag);
     }
 }
@@ -95,11 +95,11 @@ function makeCards() {
 function setMovies() { // 제대로 작동 안함, 이유를 모르겠음, 안돼면 튜터님께 질문해야 함
     let $cards = document.querySelectorAll('.movie-list');
     let $posterImages = document.querySelectorAll('li > a > div > img');
-    let $titles = document.querySelectorAll('#movieTitle'); //태그 어떡해 써야할지 모르겠음
-
+    let $titles = document.querySelectorAll('.movies-title'); //태그 어떡해 써야할지 모르겠음
+    console.log($titles); //고쳐서 콘솔로 찍어봤는데 뭔가 오류떠서 확인을 할수가 없어요.... - park
     for (let i = 0; i < movieArray.length; i++) {
         $posterImages[i].setAttribute('src', movieArray[i]['poster_path']);
-        //$titles[i].value = movieArray[i]['title'];
+        $titles[i].value = movieArray[i]['title']; //주석처리한거 다시 했습니다 - Park
         $cards[i].style.display = "block";
     }
 
