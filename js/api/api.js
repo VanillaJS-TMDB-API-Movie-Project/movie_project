@@ -117,7 +117,6 @@ export async function getDetailedMovie(id) {
       movie["belongs_to_collection"]["backdrop_path"] =
         "https://image.tmdb.org/t/p/original/" + movie["belongs_to_collection"]["backdrop_path"];
     }
-
     for (let i = 0; i < movie["genres"].length; i++) {
       for (let j = 0; j < genreArray.length; j++) {
         if (movie["genres"][i]["id"] === genreArray[j]["id"]) {
