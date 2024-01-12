@@ -469,6 +469,6 @@ async function getSearchArray(keyword, page) {
 
 // api 테스트용 메서드
 async function test() {
-    console.log(await getVideoTagArray(278));
+    console.log(await getVideoTagArray(278, 300, 300));
 }
 test();
