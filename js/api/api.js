@@ -1,7 +1,3 @@
-// api, apikey, isoCode 파일 이름 확장자 변경: .mjs => .js
-// 1~ 2번째 줄) import의 확장자 변경:  mjs => js
-// export 선언)  getDetailedMovie(), getCastArray();
-
 import { isoCode } from './isoCode.js';
 import { tmdbApiKey } from './apikey.js';
 const TMDB_API = tmdbApiKey;

@@ -1,7 +1,3 @@
-// 파일 이름 변경: sup.js => moviewReviewPage.js
-// import 메서드 선언:  getDetailedMovie(), getCastcastay()
-// import 경로: ./api/api.js으로 변경
-
 import { getDetailedMovie, getCastArray } from "./api/api.js";
 
 const key = 300; //임시 영화 id 값
@@ -33,8 +29,6 @@ function movieInformatrion(detailData, castData) {
     }
   };
 
-  // check(title, overview, vote, posterImg, genres, releaseDate, castcast, Pccast);
-  // movieList(title, ov rview, vote, posterImg, genres, releaseDate, castcast, Pccast);
   movieList(MovieObject);
 }
 
@@ -63,25 +57,3 @@ function movieList(MovieObject) {
   moviesContent.innerHTML = temp;
   moviesPoster.innerHTML = poster;
 }
-
-//유효성 검사
-// function check(title, overview, vote, posterImg, genres, releaseDate, castcast, Pccast) {
-//   let object = {
-//     title,
-//     overview,
-//     vote,
-//     posterImg,
-//     genres,
-//     releaseDate,
-//     castcast,
-//     Pccast
-//   };
-
-//   object.castay.forEach(item, (index) => {
-//     if (item[index] === null) {
-//       if (item === "title") {
-//         item = "테스중입니다.";
-//       }
-//     }
-//   });
-// }
