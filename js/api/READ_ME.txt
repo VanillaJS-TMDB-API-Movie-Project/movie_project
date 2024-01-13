@@ -153,6 +153,9 @@ official:  공식여부
 published_at: 업로드 날짜
 id:  고유 값
 
+[관련 영상 태그] - getVideoTagArray
+위의 [관련 영상] 값들을 html 태그로 변환
+
 [검색한 영화] - getSearchArray
 adult : 성인인지 여부(boolena 값)
 backdrop_path : 배경 이미지(URL 경로)
