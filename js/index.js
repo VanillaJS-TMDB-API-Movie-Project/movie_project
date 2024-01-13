@@ -63,18 +63,11 @@ function makeCards() {
     while ($cardList.firstChild) {
         $cardList.firstChild.remove()
     }
-    //poster_path 들어가는 이미지 영하 검색했을 때 이미지가 없을 수도 있음, alt 이미지 확보할 것
-    //편의 상버튼 아래로 이동시킴, 디자인 수정해야 함
 
     for (let i = 0; i < 20; i++) {
         let url = new URL(window.location.href);
         let urlParameter = new URLSearchParams(url.search);
         urlParameter.set('id', movieArray[i]['id']);
-
-        // let url = new URL(window.location.href);
-        // let urlParameter = new URLSearchParams(url.search);
-        // console.log(urlParameter.get('id'));
-        // 위 코드 sub에 붙여넣기
 
         let tag = `
                 <li class="movie-list" data-id="${i}">
@@ -92,14 +85,16 @@ function makeCards() {
     }
 }
 
-function setMovies() { // 제대로 작동 안함, 이유를 모르겠음, 안돼면 튜터님께 질문해야 함
+function setMovies() {
     let $cards = document.querySelectorAll('.movie-list');
     let $posterImages = document.querySelectorAll('li > a > div > img');
-    let $titles = document.querySelectorAll('.movies-title'); //태그 어떡해 써야할지 모르겠음
-    console.log($titles); //고쳐서 콘솔로 찍어봤는데 뭔가 오류떠서 확인을 할수가 없어요.... - park
+    let $titles = document.querySelectorAll('.movies-title');
+
+    console.log($titles);
+
     for (let i = 0; i < movieArray.length; i++) {
         $posterImages[i].setAttribute('src', movieArray[i]['poster_path']);
-        $titles[i].value = movieArray[i]['title']; //주석처리한거 다시 빼서 확인해봤습니다 - Park
+        $titles[i].innerHTML = movieArray[i]['title']; //value와 innerHTML 차이를 모르겠음. 각 태그 속성 정보 부족
         $cards[i].style.display = "block";
     }
 
@@ -187,13 +182,4 @@ function init() {
     makeCards();
 }
 
-async function test() {
-    let $cards = document.querySelectorAll('.movie-list');
-    let $posterImages = document.querySelectorAll('li > a > div > img');
-    let $titles = document.querySelectorAll('#movieTitle');
-
-    setMovies();
-}
-
 document.addEventListener("DOMContentLoaded", init());
-test();
