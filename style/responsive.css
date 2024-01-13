@@ -1,0 +1,41 @@
+/* responsive */
+@media(max-width:768px){
+    .card-ids{
+        flex-wrap: wrap;
+        gap: 30px;
+    }
+
+    .modal-wrap .modal{
+        padding: 50px 20px 30px;
+    }
+
+    .card-inner ul li .back{
+        font-size: var(--font-size-sub);
+    }
+}
+
+@media(max-width:600px){
+    .movie-search-inner{
+        flex-wrap: wrap;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .movie-search{
+        width: 100%;
+        padding: 0 20px;
+    }
+
+    .movie-search [type="text"]{
+        width: 100%;
+    }
+
+    .movie-search .fa-solid{
+        right: 6%;
+    }
+
+    .movie-search-inner button{
+        width: 92%;
+    }
+
+}
