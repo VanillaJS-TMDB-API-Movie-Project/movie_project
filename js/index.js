@@ -1,4 +1,4 @@
-import * as movieApi from './api/api.mjs';
+import * as movieApi from './api/api.js';
 
 let movieArray = await movieApi.getTopRatedMovieArray(1);
 
