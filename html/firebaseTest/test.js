@@ -7,7 +7,7 @@ const FIREBASE_CONIFG = firebaseConfig;
 
 let db;
 
-function init() { //db연결
+function init() { // 초기화(db연결, 버튼 이벤트 리스너 등록)
     const app = initializeApp(FIREBASE_CONIFG);
     db = getFirestore(app);
 
@@ -43,7 +43,7 @@ async function addAccount(inputId = "testId", inputPassword = "testPassword", in
     }
 }
 
-async function getAccount(userId) { //계정 정보 가져오기
+async function getAccount(userId) { // 계정 정보 가져오기
     const accountDoc = doc(db, "accounts", userId);
     const account = await getDoc(accountDoc);
 
@@ -54,7 +54,7 @@ async function getAccount(userId) { //계정 정보 가져오기
     }
 }
 
-async function deleteAccount(userId) { //계정 삭제
+async function deleteAccount(userId) { // 계정 삭제
     if (!await getAccount(userId)) {
         return false;
     }
@@ -71,7 +71,7 @@ async function deleteAccount(userId) { //계정 삭제
     }
 }
 
-async function updateAccount(inputId, inputPassword, inputEmail) { //계정 업데이트
+async function updateAccount(inputId, inputPassword, inputEmail) { // 계정 업데이트
     let account = await getAccount(inputId);
     if (account) {
         await updateDoc(doc(db, "accounts", inputId), {
@@ -90,7 +90,7 @@ async function updateAccount(inputId, inputPassword, inputEmail) { //계정 업�
     }
 }
 
-async function addReview(userId, reviewTitle, reviewContent, reviewScore) { //리뷰 추가
+async function addReview(userId, reviewTitle, reviewContent, reviewScore) { // 리뷰 추가
     let account = await getAccount(userId);
     let isUpdated;
 
@@ -112,7 +112,7 @@ async function addReview(userId, reviewTitle, reviewContent, reviewScore) { //�
     }
 }
 
-async function removeReview(userId, reviewTitle, reviewContent, reviewScore) { //리뷰 삭제
+async function removeReview(userId, reviewTitle, reviewContent, reviewScore) { // 리뷰 삭제
     let account = await getAccount(userId);
     let isRemoved;
 
@@ -134,8 +134,8 @@ async function removeReview(userId, reviewTitle, reviewContent, reviewScore) { /
     }
 }
 
-async function updateReview(userId, reviewTitle, reviewContent, reviewScore) { //계정 수정
-    //복잡해짐, 틀이 어느정도 정해지면 작성
+async function updateReview(userId, reviewTitle, reviewContent, reviewScore) { // 리뷰 수정
+    // 복잡해짐, 틀이 어느정도 정해지면 작성
 }
 
 async function test() { // 테스트 메서드
@@ -146,4 +146,4 @@ async function test() { // 테스트 메서드
     console.log(result);
 }
 
-init(); //초기 설정
+init(); // 초기 설정
