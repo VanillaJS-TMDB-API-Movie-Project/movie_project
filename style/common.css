@@ -166,3 +166,13 @@ footer address li a i{
 .go-top i:hover{
     color: var(--blue-color);
 }
+
+
+/*-------------- common --------------*/
+textarea{
+    resize: none;
+}
+
+button{
+    border: none;
+}

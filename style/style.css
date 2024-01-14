@@ -220,6 +220,10 @@ section .list-none {
     display: none;
 }
 
+.validation{
+    color: red;
+}
+
 .user-review-txt .validation.re-content-vali.error,
 .user-pw-revise.active .validation.re-password.error,
 .review-write-inner .user-txt.error,
@@ -236,10 +240,54 @@ section .list-none {
 }
 
 .movies-review .movies-review-inner{
-    width: 1280px;
     margin: 0 auto;
 }
+.review-write{
+    position: relative;
+}
 
+.review-write-inner{
+    margin-bottom: 10px;
+}
+
+textarea{
+    width: 700px;
+    height: 80px;
+}
+
+.review-user-form{
+    display: flex;
+    position: relative;
+}
+
+.review-user-form > p > label{
+    margin-right: 5px;
+}
+
+.review-user-form > p:last-of-type > label{
+    margin-left: 25px;
+}
+
+.review-user-form > p > input{
+    width: 150px;
+}
+
+.review-user-form span{
+    position: absolute;
+    left: 45px;
+    top: 28px;
+}
+
+.review-user-form span.valipw{
+    left: 280px;
+}
+
+.user-register{
+    position: absolute;
+    right: 50px;
+    top: 0;
+    height: 80px;
+}
 
 
 /* animation */
