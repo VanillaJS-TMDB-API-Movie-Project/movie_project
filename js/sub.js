@@ -25,7 +25,7 @@ userGrade.addEventListener('click', function (e) {
         userId : timeStamp
     };
     // console.log(userTextResult, userNameResult, userNamePassWord);
-    const validationTxt = document.querySelector('.review-write-inner > span.validation');
+    const validationTxt = document.querySelector('.user-txt');
     const validationName = document.querySelector('.valiname');
     const validationPw = document.querySelector('.valipw');
 
