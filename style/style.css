@@ -297,6 +297,7 @@ textarea::placeholder{
     display: flex;
     margin-top: 10px;
     justify-content: flex-end;
+}
 
 .user-control > button{
     background-color: transparent;
