@@ -265,6 +265,13 @@ section .list-none {
 .user-name-rating h3{
     font-weight: 700;
 }
+.review-write{
+    position: relative;
+}
+
+.review-write-inner{
+    margin-bottom: 10px;
+}
 
 .user-review-text-write{
     width: 100%;
@@ -290,7 +297,6 @@ textarea::placeholder{
     display: flex;
     margin-top: 10px;
     justify-content: flex-end;
-}
 
 .user-control > button{
     background-color: transparent;
