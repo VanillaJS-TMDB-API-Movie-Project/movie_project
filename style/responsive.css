@@ -12,6 +12,47 @@
     .card-inner ul li .back{
         font-size: var(--font-size-sub);
     }
+    
+    .movies-detail-list{
+        flex-wrap: wrap;
+        gap: 50px;
+    }
+
+    .review-write-inner{
+        flex-wrap: wrap;
+    }
+
+    .review-write-inner > button{
+        width: 100%;
+        height: 30px;
+    }
+
+    .movies-review .movies-review-inner{
+        max-width: 100%;
+    }
+    
+    .review-user-form{
+        justify-content: space-between;
+        gap: 0;
+        width: 100%;
+    }
+
+    .review-user-form > p{
+        width: 50%;
+    }
+
+    .review-user-form > p > span{
+        margin-left: 35px;
+    }
+
+    .review-user-form > p > input{
+        width: 50%;
+    }
+
+
+
+
+
 }
 
 @media(max-width:600px){
@@ -36,6 +77,15 @@
 
     .movie-search-inner button{
         width: 92%;
+    }
+
+    .review-user-form{
+        flex-wrap: wrap;
+    }
+
+    .review-user-form > p{
+        width: 100%;
+        margin-bottom: 20px;
     }
 
 }
