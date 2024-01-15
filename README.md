@@ -38,17 +38,17 @@
 <br><br>
   
 - [x] const와 let만을 이용한 변수 선언
-- [ ] 형 변환 - 예시 중 2개 이상 사용 (number → string, string → number, boolean → string)
+- [x] 형 변환 - 예시 중 2개 이상 사용 (number → string, string → number, boolean → string)
 - [ ] 연산자 - 예시 중 3개 이상 사용 ( &&, ||, !, ?:, typeof)
-- [ ] 화살표 함수 - 2개 이상 사용 (일반 화살표 함수, 한 줄로 된 화살표 함수, 매개변수가 하나이 화살표 함수)
+- [x] 화살표 함수 - 2개 이상 사용 (일반 화살표 함수, 한 줄로 된 화살표 함수, 매개변수가 하나이 화살표 함수)
 - [ ] 조건문 전부 구현 (if, if-else, if-else if-else, switch, 삼항연산자, 조건문중첩)
 - [ ] 반복문 전부 구현 (for, for in, for of, while, do~while, break, continue)
-- [ ] 객체 병합
+- [x] 객체 병합
 - [ ] 배열 2개이상 사용 - (push, pop, shift, unshift, splice, slice)
-- [ ] 배열 3개이상 사용 - (forEach, map, filter, reduce, find)
+- [x] 배열 3개이상 사용 - (forEach, map, filter, reduce, find)
 - [ ] 자료구조 1개이상 사용 - (map, set, null, undefiend, callback)
-- [ ] DOM객체 생성 선택 4개이상 사용
-- [ ] 모듈 사용 (import, export)
+- [x] DOM객체 생성 선택 4개이상 사용
+- [x] 모듈 사용 (import, export)
 
 <br>
 <br>
