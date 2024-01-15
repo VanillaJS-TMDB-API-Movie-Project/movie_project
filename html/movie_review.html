@@ -18,6 +18,7 @@
     <script src="https://kit.fontawesome.com/53932b056b.js" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="../style/responsive.css">
     <script type="module" src="../js/common.js"></script>
     <script type="module" src="../js/main.js"></script>
     <script type="module" src="../js/sub.js"></script>
@@ -30,7 +31,7 @@
         <h1 class="logo">
             <a href="../index.html"><i class="fa-solid fa-clapperboard"></i> 영화 검색 콜렉션 &#58;&#41;</a>
         </h1>
-        <nav class="movie-search-title">
+        <!-- <nav class="movie-search-title">
             <form class="movie-search-inner" action="" id="search-form">
                 <h2>영화 검색 : </h2>
                 <div class="movie-search">
@@ -39,7 +40,7 @@
                 </div>
                 <button id="search-btn">검색하기</button>
             </form>
-        </nav>
+        </nav> -->
     </header>
     <main>
         <section class="movies-detail">
@@ -58,51 +59,38 @@
             <div class="movies-review-inner">
                 <form>
                     <div class="review-write">
-                        <div class="review-write-inner">
-                            <!-- <div class="grade">
-                                <p>평점</p>
-                                <p class="star">
-                                    <i class="rating__star far fa-star"></i>
-                                    <i class="rating__star far fa-star"></i>
-                                    <i class="rating__star far fa-star"></i>
-                                    <i class="rating__star far fa-star"></i>
-                                    <i class="rating__star far fa-star"></i>
-                                </p>
-                            </div> -->
-                            <textarea class="user-write-register" required></textarea>
-                            <span class="validation user-txt">내용을 입력해 주세요 </span>
-                        </div>
                         <div class="review-user-form">
                             <p class="user-form-name">
                                 <label for="user-name">이름</label>
-                                <input type="text" id="user-name" required>
-                            </p>
-                            <span class="validation valiname">이름을 입력해 주세요</span>
+                                <input type="text" id="user-name" required placeholder="홍길동">
+                                <span class="validation valiname">이름을 입력해 주세요.</span>
+                            </p>       
                             <p class="user-form-password">
                                 <label for="user-pw">암호</label>
                                 <input type="password" id="user-pw" class="user-pw" maxlength="15" required>
+                                <span class="validation valipw">암호를 입력해 주세요.</span>
                             </p>
-                            <span class="validation valipw">암호를 입력해 주세요</span>
                         </div>
-                        <button class="user-register">관람평 등록</button>
+                        <div class="review-write-inner">
+                            <div class="user-review-text-write">
+                                <textarea class="user-write-register" required placeholder="내용을 입력해 주세요."></textarea>
+                                <span class="validation user-txt">내용을 입력해 주세요.</span>
+                            </div>
+                            <button class="user-register">관람평 등록</button>
+                        </div>
                     </div>
                 </form>
                 <div class="user-review">
                     <ul class="user-review-inner">
-                        <!-- <li class="user-review-list">
+                        <li class="user-review-list">
                             <div class="user-name-rating">
                                 <h3>해피</h3>
-                                <p class="star user-star">
-                                    <i class="rating__star far fa-star"></i>
-                                    <i class="rating__star far fa-star"></i>
-                                    <i class="rating__star far fa-star"></i>
-                                    <i class="rating__star far fa-star"></i>
-                                    <i class="rating__star far fa-star"></i>
-                                </p>
                             </div>
                             <div class="user-review-txt">
                                 <p>별로임 보지마셈</p>
-                                <textarea class="user-write-register revise-text" required></textarea>
+                                <textarea class="user-write-register revise-text" required placeholder="내용을 입력해 주세요."></textarea>
+                            </div>
+                            <div class="user-control-inner">
                                 <div class="user-control">
                                     <button id="user-revise">수정</button>
                                     <button id="user-del">삭제</button>
@@ -123,7 +111,7 @@
                                     <p class="validation re-password">비밀번호가 일치하지 않습니다.</p>
                                 </form>
                             </div>
-                        </li> -->
+                        </li>
                     </ul>
                 </div>
             </div>

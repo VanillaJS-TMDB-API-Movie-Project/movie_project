@@ -25,7 +25,7 @@ userGrade.addEventListener('click', function (e) {
         userId : timeStamp
     };
     // console.log(userTextResult, userNameResult, userNamePassWord);
-    const validationTxt = document.querySelector('.review-write-inner > span.validation');
+    const validationTxt = document.querySelector('.user-txt');
     const validationName = document.querySelector('.valiname');
     const validationPw = document.querySelector('.valipw');
 
@@ -121,10 +121,9 @@ userList.addEventListener('click', function (e) {
         const validation = userControl.querySelector('.re-password');
         const yourReviseInner = userControl.querySelector('.user-review-txt');
         const yourReviseText = yourReviseInner.querySelector('.revise-text');
-        const yourReviseBtn = document.querySelector('#user-re');
-        const yourCancelBtn = document.querySelector('#user-cancel');
+        const yourReviseBtn = userControl.querySelector('#user-re');
+        const yourCancelBtn = userControl.querySelector('#user-cancel');
         const yourReContentVali = document.querySelector('.re-content-vali');//수정벨리데이션
-        
         if (e.target === userDelBtn) {
             // 삭제 버튼 클릭했을때
             yourPassWordReBtn.style.display = "none";
@@ -162,12 +161,15 @@ userList.addEventListener('click', function (e) {
                 const yourRePassWordValue = yourPassWordInput.value;
                 if(yourRePassWordValue === yourDataPw.password){
                     //키값을 불러와서 사용자가쓴 키값이랑 맞으면? 수정텍스트가 나와
+                    const reviseYourText = yourReviseInner.getElementsByTagName('p')[0];
                     yourReviseText.classList.add('active');
+                    yourReviseText.innerHTML = reviseYourText.innerHTML; //내용 innerHTML로 넣어줌
+                    reviseYourText.style.display = "none";
                     validation.classList.remove('error');
                     yourPasswordForm.classList.remove('active');
                     userReviseBtn.style.display="none";
                     userDelBtn.style.display="none";
-                    yourReviseBtn.style.display="block";
+                    yourReviseBtn.style.display="block"; 
                     yourCancelBtn.style.display="block";
 
                     //만약에 사용자가 수정한 값이랑 맞으면 안에 있는거 대치
