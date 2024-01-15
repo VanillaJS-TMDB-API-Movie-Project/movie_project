@@ -1,6 +1,6 @@
 import { isoCode } from "./isoCode.js";
-const TMDB_API =
-  "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyYzVmNjg4OWY4MTI5Y2RhNWQxMjIzMmNjNGRmZTE1ZiIsInN1YiI6IjY1OTY0NWQ2ZWQ5NmJjMmMyM2Y3NjAxMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Z5Xf84NGwedfYAsEx7VvvBYmSeJ23JrOmoswI1GQYzU";
+import { tmdbApiKey } from './apikey.js';
+const TMDB_API = tmdbApiKey;
 
 // 레이팅 순위로 정렬된 영화 목록(내림차순) - https://developer.themoviedb.org/reference/movie-top-rated-list
 export async function getTopRatedMovieArray(page) {
