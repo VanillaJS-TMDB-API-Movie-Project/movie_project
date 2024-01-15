@@ -88,13 +88,19 @@ function makeCards() {
 function setMovies() {
     let $cards = document.querySelectorAll('.movie-list');
     let $posterImages = document.querySelectorAll('li > a > div > img');
+    let $reviewSrc = document.querySelectorAll('.movie-list > a');
     let $titles = document.querySelectorAll('.movies-title');
 
-    console.log($titles);
+    console.log($reviewSrc);
 
     for (let i = 0; i < movieArray.length; i++) {
+        let url = new URL(window.location.href);
+        let urlParameter = new URLSearchParams(url.search);
+        urlParameter.set('id', movieArray[i]['id']);
+
         $posterImages[i].setAttribute('src', movieArray[i]['poster_path']);
-        $titles[i].innerHTML = movieArray[i]['title']; //value와 innerHTML 차이를 모르겠음. 각 태그 속성 정보 부족
+        $reviewSrc[i].href = `html/movie_review.html?${urlParameter.toString()}`
+        $titles[i].innerHTML = movieArray[i]['title'];
         $cards[i].style.display = "block";
     }
 
