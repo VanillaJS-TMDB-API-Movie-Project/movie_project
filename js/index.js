@@ -1,8 +1,9 @@
 import * as movieApi from './api/api.js';
 
-let movieArray = await movieApi.getTopRatedMovieArray(1);
-let isSearchResult = false;
+let movieArray = await movieApi.getTopRatedMovieArray(1); // 영화 정보를 저장하는 배열
+let isSearchResult = false; // 검색 결과를 보여주고 있는지 여부
 
+//필터 버튼들 만들고 이벤트 등록
 async function makeButtons() {
 
     document.querySelectorAll('.movies-btn-list > li > a').forEach(filter => {
@@ -30,6 +31,7 @@ async function makeButtons() {
 
 }
 
+//사이트를 열었을 때 출력할 카드들 생성
 function makeCards() {
     let $cardList = document.querySelector('.card-list');
     while ($cardList.firstChild) {
@@ -57,6 +59,7 @@ function makeCards() {
     }
 }
 
+//출력한 카드들에 영화의 정보들을 적용
 function setMovies() {
     movieArray = movieArray.filter(movie => {
         if (movie['poster_path'].indexOf('null') !== -1) {
@@ -98,8 +101,8 @@ function setMovies() {
     }
 }
 
+//필터 버튼을 클릭했을 때 필터에 걸러진 결과들을 출력
 function clickFilter(filter) {
-    console.log(filter);
 
     switch (filter) {
         case '전체보기':
@@ -120,8 +123,8 @@ function clickFilter(filter) {
     }
 }
 
+//필터에 걸러지기 전의 모든 영화정보들을 출력
 async function showAll() {
-    console.log('전체보기');
     if (isSearchResult) {
         clickSearch();
     }
@@ -131,6 +134,7 @@ async function showAll() {
     }
 }
 
+//인기도 순으로 정렬해서 영화 정보들을
 function showPopularityOrder() {
     movieArray = movieArray.sort((a, b) => {
         if (a['popularity'] > b['popularity'])
@@ -141,15 +145,15 @@ function showPopularityOrder() {
             return 0;
     });
     setMovies();
-    //movieArray.forEach(movie => console.log(movie['title'], movie['popularity']));
 }
 
+//출시일 순으로 정렬해서 영화 정보들을
 function showReleaseDateOrder() {
     movieArray = movieArray.sort((a, b) => new Date(b['release_date']).getTime() - new Date(a['release_date']).getTime());
     setMovies();
-    //movieArray.forEach(movie => console.log(movie['title'], movie['release_date']));
 }
 
+//드라마 장르의 영화들만 출력
 async function showDrama() {
     if (isSearchResult) {
         let $searchText = document.querySelector('.movie-search > input');
@@ -170,10 +174,10 @@ async function showDrama() {
         });
         return matchFlag;
     });
-    //movieArray.forEach(movie => console.log(movie['title'], movie['genre_ids']));
     setMovies();
 }
 
+//액션 장르의 영화들만 출력
 async function showAction() {
     if (isSearchResult) {
         let $searchText = document.querySelector('.movie-search > input');
@@ -194,10 +198,10 @@ async function showAction() {
         });
         return matchFlag;
     });
-    //movieArray.forEach(movie => console.log(movie['title'], movie['genre_ids']));
     setMovies();
 }
 
+//검색 버튼을 클릭했을 때, 검색 내용을 출력
 async function clickSearch() {
     let $searchText = document.querySelector('.movie-search > input');
 
@@ -208,13 +212,14 @@ async function clickSearch() {
 
     isSearchResult = true;
     movieArray = await movieApi.getSearchArray($searchText.value, 1);
-    console.log(movieArray);
     setMovies();
 }
 
+//사이트를 열었을 때 초기화하는 과정
 function init() {
     makeButtons();
     makeCards();
 }
 
+//사이트를 로딩하기 전에 초기화 과정을 끝냄
 document.addEventListener("DOMContentLoaded", init());
