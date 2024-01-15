@@ -65,10 +65,13 @@ function movieList(MovieObject) {
   });
 
   let name = castName.slice(0, 5).toString().replace(/,/g, "/"); //배우
-  let character = castCharacter.toString().replace(/\d\(voice\)/g, ""); // 배역
+  let character = castCharacter.slice(0, 5).toString().replace(/\d/g, ""); // 배역
   let genres = MovieObject.genres.toString().replace(/,/g, "/"); //장르
   let releaseDate = MovieObject.releaseDate.replace(/-/g, "."); //개봉일
-  let Company = MovieObject.CompanyName().toString().replace(/,/g, "/"); //제작 회사
+  let CompanyName = MovieObject.CompanyName().toString().replace(/,/g, "/"); //제작 회사
+  let CompanyLogo = MovieObject.CompanyLogo();
+
+  CompanyLogo;
 
   //html 태그 생성 및 값 대입
   let temp = `
@@ -78,15 +81,16 @@ function movieList(MovieObject) {
 <p>${releaseDate}</p>
 <p>${genres}</p>
 <p>${name}</p>
-<p>${Company}</p>
+<p>${character}</p
+<p>${CompanyName}</p>
 
 `;
 
   //html 태그 생성 및 값 대입
   let poster = `
   <img src=" ${MovieObject.posterImg}" alt="${MovieObject.title}" />
-  <img src="${MovieObject.CompanyLogo()[0]}" alt="${MovieObject.title}" />
-  <p>${character}</p`;
+  <img src="${CompanyLogo}" alt="${MovieObject.title}" />
+  `;
 
   {
   }
