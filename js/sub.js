@@ -118,7 +118,7 @@ function allUserData(){
                     <form>
                         <p class="user-pw-form">
                             <label for="your-pw">비밀번호입력 : </label>
-                            <input type="password" id="your-pw" maxlength="15" required>
+                            <input type="password" id="your-pw" class="your-pw" maxlength="15" required>
                             <button class="user-pw-check">확인</button>
                             <button class="user-pw-check2">확인</button>
                         </p>
@@ -142,7 +142,7 @@ userList.addEventListener('click', function (e) {
         const yourPasswordForm = userControl.querySelector('.user-pw-revise');
         const yourPassWordBtn = yourPasswordForm.querySelector('.user-pw-check');
         const yourPassWordReBtn = yourPasswordForm.querySelector('.user-pw-check2'); //수정버튼할때  나오는 패스워드
-        const yourPassWordInput = yourPasswordForm.querySelector('#your-pw');
+        const yourPassWordInput = yourPasswordForm.querySelector('.your-pw');
         const validation = userControl.querySelector('.re-password');
         const yourReviseInner = userControl.querySelector('.user-review-txt');
         const yourReviseText = yourReviseInner.querySelector('.revise-text');
@@ -179,6 +179,7 @@ userList.addEventListener('click', function (e) {
             const yourDataPw = JSON.parse(localStorage.getItem(myKey)); //다시 객체로 불러옴
             yourPasswordForm.classList.add('active');
             //비밀번호 확인 버튼을 클릭할때 수정텍스트 나오고 아니면 다시 비번틀렸다고 나옴
+
             yourPassWordReBtn.addEventListener('click',function(e){
                 e.preventDefault();
                 yourPassWordBtn.classList.add('active');
