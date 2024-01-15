@@ -70,21 +70,6 @@ function movieList(MovieObject) {
       }
     })
     .join(""); //프로필 마다(,)쉼표가 표시되어 삭제
-
-  // const temp = `
-  //   <h2>${MovieObject.title}</h2>
-  //   <p>${MovieObject.overview}</p>
-  //   <p>${MovieObject.vote}</p>
-  //   <p>${MovieObject.runtime}분</p>
-  //   <p>${releaseDate}</p>
-  //   <p>${genres}</p>
-  //   <p>배우</p>
-  //   <p>${castName}</p>
-  //   <p>배역</p>
-  //   <p>${castCharacter}</p>
-  //   <p>제작 회사</p>
-  //   <p>${companyName}</p>
-  // `;
   const temp = `
   <div class="movies-detail-inner">
   <a href="../index.html"><i class="fa-solid fa-arrow-left"></i></a>
@@ -114,5 +99,4 @@ function movieList(MovieObject) {
   // html 태그 적용
   moviesContent.innerHTML = temp;
   moviesPoster.innerHTML = tagProfile;
-  // moviesContent.innerHTML += tagProfile;
 }
