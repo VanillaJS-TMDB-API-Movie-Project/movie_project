@@ -1,3 +1,12 @@
+import { getDetailedMovie, getCastArray } from "./api/api.js";
+
+let url = new URL(window.location.href);
+let urlParameter = new URLSearchParams(url.search);
+const id = urlParameter.get("id"); //영화 id 값
+
+const detailData = await getDetailedMovie(id); // getDetailedMovie() 함수 실행
+const castData = await getCastArray(id); // getCastcastay() 함수 실행
+
 /* 사용자 받아오는 전역변수 지정(다른함수에서 재사용) */
 const userGrade = document.querySelector('.user-register'); //관람평 등록 버튼
 const userTextarea = document.getElementsByTagName('textarea')[0]; //textarea 불러옴(과제 조건에 충족하기 위해 일부러 querySelector사용 안함)
@@ -15,6 +24,7 @@ userGrade.addEventListener('click', function (e) {
     const userNameResult = userName.value;
     const userNamePassWord = userPassWord.value;
     const timeStamp = new Date().getTime();
+
     // console.log(timeStamp);
 
     // 입력된 값을 객체로 저장"
@@ -22,7 +32,8 @@ userGrade.addEventListener('click', function (e) {
         user : userNameResult,
         content : userTextResult,
         password : userNamePassWord,
-        userId : timeStamp
+        userId : timeStamp,
+        userApiId : detailData
     };
     // console.log(userTextResult, userNameResult, userNamePassWord);
     const validationTxt = document.querySelector('.user-txt');

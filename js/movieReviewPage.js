@@ -2,10 +2,10 @@ import { getDetailedMovie, getCastArray } from "./api/api.js";
 
 let url = new URL(window.location.href);
 let urlParameter = new URLSearchParams(url.search);
-const key = urlParameter.get("id"); //영화 id 값
+const id = urlParameter.get("id"); //영화 id 값
 
-const detailData = await getDetailedMovie(key); // getDetailedMovie() 함수 실행
-const castData = await getCastArray(key); // getCastcastay() 함수 실행
+const detailData = await getDetailedMovie(id); // getDetailedMovie() 함수 실행
+const castData = await getCastArray(id); // getCastcastay() 함수 실행
 
 movieInformatrion(detailData, castData);
 
