@@ -201,6 +201,11 @@ async function showAction() {
 async function clickSearch() {
     let $searchText = document.querySelector('.movie-search > input');
 
+    if ($searchText.value === '') {
+        alert('검색할 내용을 입력하세요.');
+        return;
+    }
+
     isSearchResult = true;
     movieArray = await movieApi.getSearchArray($searchText.value, 1);
     console.log(movieArray);
