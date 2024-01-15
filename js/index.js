@@ -151,7 +151,14 @@ function showReleaseDateOrder() {
 }
 
 async function showDrama() {
-    movieArray = await movieApi.getTopRatedMovieArray(1);
+    if (isSearchResult) {
+        let $searchText = document.querySelector('.movie-search > input');
+
+        movieArray = await movieApi.getSearchArray($searchText.value, 1);
+    }
+    else {
+        movieArray = await movieApi.getTopRatedMovieArray(1);
+    }
 
     movieArray = movieArray.filter(movie => {
         let matchFlag = false;
@@ -168,7 +175,14 @@ async function showDrama() {
 }
 
 async function showAction() {
-    movieArray = await movieApi.getTopRatedMovieArray(1);
+    if (isSearchResult) {
+        let $searchText = document.querySelector('.movie-search > input');
+
+        movieArray = await movieApi.getSearchArray($searchText.value, 1);
+    }
+    else {
+        movieArray = await movieApi.getTopRatedMovieArray(1);
+    }
 
     movieArray = movieArray.filter(movie => {
         let matchFlag = false;
