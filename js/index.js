@@ -225,8 +225,11 @@ async function clickSearch() {
         return;
     }
 
+    // 검색어에서 양 옆 공백 제거후 전부 모든 공백 제거
+    let searchTextValue = $searchText.value.trim().toLowerCase();
+
     isSearchResult = true;
-    movieArray = await movieApi.getSearchArray($searchText.value, 1);
+    movieArray = await movieApi.getSearchArray(searchTextValue, 1);
     setMovies();
 }
 
