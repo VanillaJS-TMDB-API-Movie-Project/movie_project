@@ -73,7 +73,7 @@ function makeCards() {
                 <li class="movie-list" data-id="${i}">
                     <a href="html/movie_review.html?${urlParameter.toString()}">
                         <div class="side">
-                            <img src="${movieArray[i]['poster_path']}" alt="">
+                            <img src="${movieArray[i]['poster_path']}">
                         </div>
                         <div class="side back">
                             <p class="movies-title">${movieArray[i]['title']}</p>
@@ -86,6 +86,17 @@ function makeCards() {
 }
 
 function setMovies() {
+    movieArray = movieArray.filter(movie => {
+        if (movie['poster_path'].indexOf('null') !== -1) {
+            return false;
+        }
+        else if (movie['backdrop_path'].indexOf('null') !== -1) {
+            return false;
+        }
+
+        return true;
+    });
+
     let $cards = document.querySelectorAll('.movie-list');
     let $posterImages = document.querySelectorAll('li > a > div > img');
     let $reviewSrc = document.querySelectorAll('.movie-list > a');
@@ -99,6 +110,7 @@ function setMovies() {
         urlParameter.set('id', movieArray[i]['id']);
 
         $posterImages[i].setAttribute('src', movieArray[i]['poster_path']);
+        $posterImages[i].setAttribute('alt', 'images/testNoImage.jpg')
         $reviewSrc[i].href = `html/movie_review.html?${urlParameter.toString()}`
         $titles[i].innerHTML = movieArray[i]['title'];
         $cards[i].style.display = "block";
