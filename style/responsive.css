@@ -49,7 +49,7 @@
         font-size: 14px;
     }
 
-    .movies-btn-list li{
+    .movies-btn-list li a{
         padding: 5px 15px;
     }
 
