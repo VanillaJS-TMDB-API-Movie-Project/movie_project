@@ -49,7 +49,7 @@ function movieList(MovieObject) {
   const castProfile = MovieObject.castProfile.slice(0, 5); //배우 프로필
 
   // 배우 프로필 사진 유효성 검사
-  const defaultProfile = "../images/image-default.jpeg"; //images 폴더 안에 있는 기본 이미지 설정
+  const defaultProfile = "../images/image-default.png"; //images 폴더 안에 있는 기본 이미지 설정
   const NullProfile = "https://image.tmdb.org/t/p/original/null"; //api에 없는 이미지 설정
   const tagProfile = castProfile
     .map((item, index) => {
@@ -66,7 +66,17 @@ function movieList(MovieObject) {
         </li>
         `;
       } else {
-        return `<img src="${defaultProfile}" alt="${MovieObject.title}" />`;
+        return `
+        <li class="cast-list">
+        <div class="movies-cast-list">
+          <img src="${defaultProfile}" alt="${MovieObject.title}">
+          <div class="movies-cast-title">
+            <h3>${castName[index]}</h3>
+            <p>${castCharacter[index]}</p>
+          </div>
+        </div>
+    </li>
+        `;
       }
     })
     .join(""); //프로필 마다(,)쉼표가 표시되어 삭제
@@ -82,9 +92,9 @@ function movieList(MovieObject) {
       <ul>
         <li>
         <h2>${MovieObject.title}</h2>
-        <p>${MovieObject.vote}</p>
-        <p>${releaseDate}</p>
-        <p>${MovieObject.runtime}분</p>
+        <p>평점 : ${MovieObject.vote}</p>
+        <p>개봉일 : ${releaseDate}</p>
+        <p>상영시간 : ${MovieObject.runtime}분</p>
         <p class="movies-contents">${MovieObject.overview}</p>
         </li>
       </ul>
