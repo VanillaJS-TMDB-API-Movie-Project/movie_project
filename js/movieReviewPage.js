@@ -5,15 +5,16 @@ let urlParameter = new URLSearchParams(url.search);
 const id = urlParameter.get("id"); //영화 id 값
 
 const detailData = await getDetailedMovie(id); // getDetailedMovie() 함수 실행
-const castData = await getCastArray(id); // getCastcastay() 함수 실행
+const castData = await getCastArray(id); //  getCastArray() 함수 실행
 
 document.addEventListener(
   "DOMContentLoaded",
-  movieInformatrion(detailData, castData)
+  movieInformation(detailData, castData)
 );
 
-function movieInformatrion(detailData, castData) {
+function movieInformation(detailData, castData) {
   let MovieObject = {
+    //getDetailedMovie() 메서드
     title: detailData["title"], // 영화 제목
     overview: detailData["overview"], // 영화 내용
     vote: detailData["vote_average"].toFixed(2), //영화 평점
@@ -22,23 +23,13 @@ function movieInformatrion(detailData, castData) {
     genres: detailData["genres"], // 영화 장르
     releaseDate: detailData["release_date"], //개봉일
     runtime: detailData["runtime"], //상영 시간
-    cast: function () {
-      //영화 배우 정보
-      return castData.map((item) => {
-        return {
-          name: item.original_name,
-          profile: item.profile_path,
-          character: item.character,
-        };
-      });
-    },
-    CompanyName: function () {
-      let productionCompanies = detailData["production_companies"]; //영화 제작사
-      return productionCompanies.map((item) => {
-        return item.name;
-      });
-    },
+    CompanyName: detailData["production_companies"].map((item) => item.name), //제작 회사
+    //getCastArray() 메서드
+    castName: castData.map((item) => item.name),
+    castCharacter: castData.map((item) => item.character),
+    castProfile: castData.map((item) => item.profile_path),
   };
+
   movieList(MovieObject);
 }
 
@@ -46,20 +37,23 @@ function movieList(MovieObject) {
   const moviesContent = document.querySelector(".movies-content");
   const moviesPoster = document.querySelector(".poster-img");
 
-  const castData = MovieObject.cast().slice(0, 5);
-
-  const castName = castData.map((item) => item.name).join("/"); //배우 이름
-  const castCharacter = castData //배역 이름
-    .map((item) => item.character.replace(/\d/g, ""))
-    .join("");
-  const castProfile = castData.map((item) => item.profile); //배우 프로필
+  //각각 영화 정보의 표현방식을 바꿈
+  //slice(): 배열 자릿수 표현
+  //join(): 배열을 문자열로 바꿈
+  //replace(): 해당 조건에 만족할 경우 문자 교체 및 삭제
   const genres = MovieObject.genres.join("/"); //장르
   const releaseDate = MovieObject.releaseDate.replace(/-/g, "."); //개봉일
-  const companyName = MovieObject.CompanyName().join("/"); //제작 회사
+  const companyName = MovieObject.CompanyName.join("/"); //제작 회사
+  const castName = MovieObject.castName.slice(0, 5).join("/"); //배우 이름
+  const castCharacter = MovieObject.castCharacter //배역
+    .slice(0, 5) //배역 5명만 표현
+    .join("/") // 배열을 문자열로 합칠 때 "/" 구분한다.
+    .replace(/\d/g, ""); //문자열에 숫자가 있을 경우 숫자 제거
+  const castProfile = MovieObject.castProfile.slice(0, 5); //배우 프로필
 
-  // 배우 프로필 처리
-  const defaultProfile = "../images/image-default.jpeg"; //images 폴더 안에 있는 기본 이미지
-  const NullProfile = "https://image.tmdb.org/t/p/original/null"; //api에 이미지 없는 경로
+  // 배우 프로필 사진 유효성 검사
+  const defaultProfile = "../images/image-default.jpeg"; //images 폴더 안에 있는 기본 이미지 설정
+  const NullProfile = "https://image.tmdb.org/t/p/original/null"; //api에 없는 이미지 설정
   const tagProfile = castProfile
     .map((item) => {
       if (item !== NullProfile) {
@@ -68,7 +62,7 @@ function movieList(MovieObject) {
         return `<img src="${defaultProfile}" alt="${MovieObject.title}" />`;
       }
     })
-    .join("");
+    .join(""); //프로필 마다(,)쉼표가 표시되어 삭제
 
   const temp = `
     <h2>${MovieObject.title}</h2>
