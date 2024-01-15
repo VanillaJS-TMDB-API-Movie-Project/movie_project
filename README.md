@@ -147,11 +147,19 @@ Communication
 ## 기능 미리보기(Front-end)
 |페이지 명|페이지 및 기능|설명|담당개발자|
 |:----:|:----:|:----:|:----:|
-|Main Page||- 카테고리 별 영화조회<br>- 영화 목록 조회 검색<br>- TMDB API연결| **FRONT-END**<br> `김명환`|
+|Main Page|![ㅇㅇ](https://github.com/seokachu/movie_project/assets/116704646/7042850e-4163-436f-9505-0a5d359d474b)|- 카테고리 별 영화조회<br>- 영화 목록 조회 검색<br>- TMDB API연결| **FRONT-END**<br> `김명환`|
 |Main Page|![Screenshot 2024-01-15 at 23 18 34](https://github.com/seokachu/movie_project/assets/116704646/8d877e10-d87e-48f8-9e58-8d66833a59eb)|- 영화 목록 조회 검색<br>- 검색 벨리데이션 구현| **FRONT-END**<br> `안주원`|
-|Main Page|![Screenshot 2024-01-15 at 23 11 24](https://github.com/seokachu/movie_project/assets/116704646/360f6502-c5df-418d-af34-07d93e61eaf8)|- 메인페이지 퍼블리싱<br>- 카드효과<br>- 필터링 버튼효과 적용<br>- 버튼 스크롤 구현| **FRONT-END**<br> `박서영`|
+|Main Page|![ㅇㄴ](https://github.com/seokachu/movie_project/assets/116704646/f4bc21a9-9eac-4af2-995d-417ea2934e66)|- 메인페이지 퍼블리싱<br>- 카드효과<br>- 필터링 버튼효과 적용<br>- 버튼 스크롤 구현| **FRONT-END**<br> `박서영`|
 |movie_review Page|![Screenshot 2024-01-15 at 23 15 06](https://github.com/seokachu/movie_project/assets/116704646/9e761e3e-e309-40ee-b334-e76a1dac167b)|- 서브페이지 퍼블리싱<br> - 버튼 스크롤 구현<br>- 관람평 CRUD구현<br>- 관람평 벨리데이션 구현<br>- 각각의 카드 ID CRUD 구현| **FRONT-END**<br>`박서영`|
 |movie_review Page|![Screenshot 2024-01-15 at 23 16 25](https://github.com/seokachu/movie_project/assets/116704646/cc362f00-d02c-42ee-8362-670116d636c5)|- 카드 클릭시 서브페이지 이동기능 구현<br>| **FRONT-END**<br>`이준구`|
+
+
+
+
+
+
+
+
 
 
 
