@@ -20,7 +20,15 @@
 
 `영화검색` : 영화 목록을 조회하고 검색할 수 있습니다.
 
-`관람평조회,수정,삭제` : 관람평을 남기고 리뷰 삭제, 수정이 가능합니다.
+`관람평조회,수정,삭제 CRUD` : 로컬스토리지를 이용한 관람평을 남기고 리뷰 삭제, 수정이 가능합니다.
+
+`카드 리스트 정렬` : 인기순, 출시일, 속성에 따른 버튼을 추가하여 내림차순으로 정렬.
+
+`스크롤이벤트` : 스크롤 내릴시 상단으로 이동하는 스크롤 구현
+
+`반응형 웹` : 전체 웹페이지 반응형 구현.
+
+`헤더 고정` : 상단 header부분을 고정하여 UI/UX향상
 
 <br>
 <br>
@@ -57,7 +65,7 @@
 ## Team members
 |김명환|박서영|안주원|이준구|
 |:----:|:----:|:----:|:----:|
-|**Features**<br><br>TMDB api연결<br>메인페이지 검색 필터링|**Features**<br><br>메인페이지 퍼블리싱<br>서브페이지 퍼블리싱<br>관람평등록 CRUD구현<br>CRUD 벨리데이션 구현<br>카드 각각ID 관람평등록 구현<br>&nbsp;|**Features**<br><br>메인페이지 검색 벨리데이션 구현|**Features**<br><br>카드리스트 상세페이지 이동 구현|
+|<br>**Features**<br><br>TMDB api연결<br>메인페이지 검색 필터링<br>|<br>**Features**<br><br>메인페이지 퍼블리싱<br>서브페이지 퍼블리싱<br>메인페이지 필터 버튼 active 구현<br>버튼 스크롤 구현<br>관람평등록 CRUD구현<br>CRUD 벨리데이션 구현<br>카드 각각ID 관람평등록 구현<br>&nbsp;|<br>**Features**<br><br>메인페이지 검색 벨리데이션 구현|**Features**<br><br>카드리스트 상세페이지 이동 api 구현|
 
 <br>
 <br>
@@ -140,10 +148,20 @@ Communication
 |페이지 명|페이지 및 기능|설명|담당개발자|
 |:----:|:----:|:----:|:----:|
 |Main Page||- 카테고리 별 영화조회<br>- 영화 목록 조회 검색<br>- TMDB API연결| **FRONT-END**<br> `김명환`|
-|Main Page||- 영화 목록 조회 검색<br>- 검색 벨리데이션 구현| **FRONT-END**<br> `안주원`|
-|Main Page||- 메인페이지 퍼블리싱<br>- 카드효과<br>- 버튼효과 적용| **FRONT-END**<br> `박서영`|
-|movie_review Page||- 관람평 CRUD구현<br>- 관람평 벨리데이션 구현<br>- 각각 카드 ID CRUD 구현| **FRONT-END**<br>`박서영`|
-|movie_review Page||- 카드 클릭시 서브페이지 이동기능 구현<br>| **FRONT-END**<br>`이준구`|
+|Main Page|![Screenshot 2024-01-15 at 23 18 34](https://github.com/seokachu/movie_project/assets/116704646/8d877e10-d87e-48f8-9e58-8d66833a59eb)|- 영화 목록 조회 검색<br>- 검색 벨리데이션 구현| **FRONT-END**<br> `안주원`|
+|Main Page|![Screenshot 2024-01-15 at 23 11 24](https://github.com/seokachu/movie_project/assets/116704646/360f6502-c5df-418d-af34-07d93e61eaf8)|- 메인페이지 퍼블리싱<br>- 카드효과<br>- 필터링 버튼효과 적용<br>- 버튼 스크롤 구현| **FRONT-END**<br> `박서영`|
+|movie_review Page|![Screenshot 2024-01-15 at 23 15 06](https://github.com/seokachu/movie_project/assets/116704646/9e761e3e-e309-40ee-b334-e76a1dac167b)|- 서브페이지 퍼블리싱<br> - 버튼 스크롤 구현<br>- 관람평 CRUD구현<br>- 관람평 벨리데이션 구현<br>- 각각의 카드 ID CRUD 구현| **FRONT-END**<br>`박서영`|
+|movie_review Page|![Screenshot 2024-01-15 at 23 16 25](https://github.com/seokachu/movie_project/assets/116704646/cc362f00-d02c-42ee-8362-670116d636c5)|- 카드 클릭시 서브페이지 이동기능 구현<br>| **FRONT-END**<br>`이준구`|
+
+
+
+
+
+
+
+
+
+
 
 
 
