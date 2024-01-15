@@ -1,37 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no"
+    />
     <title>영화 검색 콜렉션</title>
     <!-- favicon -->
-    <link rel="shortcut icon" href="../images/favicon/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="../images/favicon/favicon.ico" type="image/x-icon">
+    <link
+      rel="shortcut icon"
+      href="../images/favicon/favicon.ico"
+      type="image/x-icon"
+    />
+    <link rel="icon" href="../images/favicon/favicon.ico" type="image/x-icon" />
     <!-- ogp -->
     <meta property="og:title" content="영화 검색 콜렉션" />
     <meta property="og:description" content="영화 검색 콜렉션 TEAM PROJECT" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://seokachu.github.io/movie_project" />
+    <meta
+      property="og:url"
+      content="https://seokachu.github.io/movie_project"
+    />
     <meta property="og:image" content="" />
     <!-- fontawesome -->
-    <script src="https://kit.fontawesome.com/53932b056b.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/53932b056b.js"
+      crossorigin="anonymous"
+    ></script>
 
-    <link rel="stylesheet" href="../style/style.css">
-    <link rel="stylesheet" href="../style/responsive.css">
+    <link rel="stylesheet" href="../style/style.css" />
+    <link rel="stylesheet" href="../style/responsive.css" />
     <script type="module" src="../js/common.js"></script>
     <script type="module" src="../js/main.js"></script>
-    <script type="module" src="../js/sub.js"></script>
     <script type="module" src="../js/api/api.js" defer></script>
     <script type="module" src="../js/movieReviewPage.js"></script>
-</head>
+    <script type="module" src="../js/sub.js"></script>
+  </head>
 
-<body>
+  <body>
     <header>
-        <h1 class="logo">
-            <a href="../index.html"><i class="fa-solid fa-clapperboard"></i> 영화 검색 콜렉션 &#58;&#41;</a>
-        </h1>
-        <!-- <nav class="movie-search-title">
+      <h1 class="logo">
+        <a href="../index.html"
+          ><i class="fa-solid fa-clapperboard"></i> 영화 검색 콜렉션
+          &#58;&#41;</a
+        >
+      </h1>
+      <!-- <nav class="movie-search-title">
             <form class="movie-search-inner" action="" id="search-form">
                 <h2>영화 검색 : </h2>
                 <div class="movie-search">
@@ -43,46 +58,55 @@
         </nav> -->
     </header>
     <main>
-        <section class="movies-detail">
-            <div class="movies-detail-list">
-                <div class="poster-img">
-                    <img src="../images/test.jpg" alt="">
+      <section class="movies-detail">
+        <div class="movies-detail-list">
+          <div class="poster-img"></div>
+          <div class="movies-content"></div>
+        </div>
+      </section>
+      <section class="movies-review">
+        <div class="movies-review-inner">
+          <form>
+            <div class="review-write">
+              <div class="review-user-form">
+                <p class="user-form-name">
+                  <label for="user-name">이름</label>
+                  <input
+                    type="text"
+                    id="user-name"
+                    required
+                    placeholder="홍길동"
+                  />
+                  <span class="validation valiname">이름을 입력해 주세요.</span>
+                </p>
+                <p class="user-form-password">
+                  <label for="user-pw">암호</label>
+                  <input
+                    type="password"
+                    id="user-pw"
+                    class="user-pw"
+                    maxlength="15"
+                    required
+                  />
+                  <span class="validation valipw">암호를 입력해 주세요.</span>
+                </p>
+              </div>
+              <div class="review-write-inner">
+                <div class="user-review-text-write">
+                  <textarea
+                    class="user-write-register"
+                    required
+                    placeholder="내용을 입력해 주세요."
+                  ></textarea>
+                  <span class="validation user-txt">내용을 입력해 주세요.</span>
                 </div>
-                <div class="movies-content">
-                    <h2>제목</h2>
-                    <p>평점</p>
-                    <p>overview</p>
-                </div>
+                <button class="user-register">관람평 등록</button>
+              </div>
             </div>
-        </section>
-        <section class="movies-review">
-            <div class="movies-review-inner">
-                <form>
-                    <div class="review-write">
-                        <div class="review-user-form">
-                            <p class="user-form-name">
-                                <label for="user-name">이름</label>
-                                <input type="text" id="user-name" required placeholder="홍길동">
-                                <span class="validation valiname">이름을 입력해 주세요.</span>
-                            </p>       
-                            <p class="user-form-password">
-                                <label for="user-pw">암호</label>
-                                <input type="password" id="user-pw" class="user-pw" maxlength="15" required>
-                                <span class="validation valipw">암호를 입력해 주세요.</span>
-                            </p>
-                        </div>
-                        <div class="review-write-inner">
-                            <div class="user-review-text-write">
-                                <textarea class="user-write-register" required placeholder="내용을 입력해 주세요."></textarea>
-                                <span class="validation user-txt">내용을 입력해 주세요.</span>
-                            </div>
-                            <button class="user-register">관람평 등록</button>
-                        </div>
-                    </div>
-                </form>
-                <div class="user-review">
-                    <ul class="user-review-inner">
-                        <!-- <li class="user-review-list">
+          </form>
+          <div class="user-review">
+            <ul class="user-review-inner">
+              <!-- <li class="user-review-list">
                             <div class="user-name-rating">
                                 <h3>해피</h3>
                             </div>
@@ -112,59 +136,90 @@
                                 </form>
                             </div>
                         </li> -->
-                    </ul>
-                </div>
-            </div>
-        </section>
+            </ul>
+          </div>
+        </div>
+      </section>
     </main>
     <footer>
-        <p class="copy">2024&copy;movie_project 4조</p>
-        <address>
-            <ul>
-                <li class="team-list">
-                    <h3>박서영</h3>
-                    <div class="team-list-info">
-                        <a href="https://github.com/seokachu" target="_blank" title="github 이동하기">
-                            <i class="fa-brands fa-github"></i>
-                        </a>
-                        <a href="https://seokachu.tistory.com" target="_blank" title="blog 이동하기"><i
-                                class="fa-solid fa-blog"></i></a>
-                    </div>
-                </li>
-                <li class="team-list">
-                    <h3>안주원</h3>
-                    <div class="team-list-info">
-                        <a href="https://github.com/joo1e" target="_blank" title="github 이동하기">
-                            <i class="fa-brands fa-github"></i>
-                        </a>
-                        <a href="https://velog.io/@urams79/posts" target="_blank" title="blog 이동하기"><i
-                                class="fa-solid fa-blog"></i></a>
-                    </div>
-                </li>
-                <li class="team-list">
-                    <h3>김명환</h3>
-                    <div class="team-list-info">
-                        <a href="https://github.com/baram55" target="_blank" title="github 이동하기">
-                            <i class="fa-brands fa-github"></i>
-                        </a>
-                        <a href="https://velog.io/@study5/posts" target="_blank" title="blog 이동하기"><i
-                                class="fa-solid fa-blog"></i></a>
-                    </div>
-                </li>
-                <li class="team-list">
-                    <h3>이준구</h3>
-                    <div class="team-list-info">
-                        <a href="https://github.com/LeeJunGoo" target="_blank" title="github 이동하기">
-                            <i class="fa-brands fa-github"></i>
-                        </a>
-                        <a href="https://velog.io/@leejungoo1396/posts" target="_blank" title="blog 이동하기"><i
-                                class="fa-solid fa-blog"></i></a>
-                    </div>
-                </li>
-            </ul>
-        </address>
+      <p class="copy">2024&copy;movie_project 4조</p>
+      <address>
+        <ul>
+          <li class="team-list">
+            <h3>박서영</h3>
+            <div class="team-list-info">
+              <a
+                href="https://github.com/seokachu"
+                target="_blank"
+                title="github 이동하기"
+              >
+                <i class="fa-brands fa-github"></i>
+              </a>
+              <a
+                href="https://seokachu.tistory.com"
+                target="_blank"
+                title="blog 이동하기"
+                ><i class="fa-solid fa-blog"></i
+              ></a>
+            </div>
+          </li>
+          <li class="team-list">
+            <h3>안주원</h3>
+            <div class="team-list-info">
+              <a
+                href="https://github.com/joo1e"
+                target="_blank"
+                title="github 이동하기"
+              >
+                <i class="fa-brands fa-github"></i>
+              </a>
+              <a
+                href="https://velog.io/@urams79/posts"
+                target="_blank"
+                title="blog 이동하기"
+                ><i class="fa-solid fa-blog"></i
+              ></a>
+            </div>
+          </li>
+          <li class="team-list">
+            <h3>김명환</h3>
+            <div class="team-list-info">
+              <a
+                href="https://github.com/baram55"
+                target="_blank"
+                title="github 이동하기"
+              >
+                <i class="fa-brands fa-github"></i>
+              </a>
+              <a
+                href="https://velog.io/@study5/posts"
+                target="_blank"
+                title="blog 이동하기"
+                ><i class="fa-solid fa-blog"></i
+              ></a>
+            </div>
+          </li>
+          <li class="team-list">
+            <h3>이준구</h3>
+            <div class="team-list-info">
+              <a
+                href="https://github.com/LeeJunGoo"
+                target="_blank"
+                title="github 이동하기"
+              >
+                <i class="fa-brands fa-github"></i>
+              </a>
+              <a
+                href="https://velog.io/@leejungoo1396/posts"
+                target="_blank"
+                title="blog 이동하기"
+                ><i class="fa-solid fa-blog"></i
+              ></a>
+            </div>
+          </li>
+        </ul>
+      </address>
     </footer>
     <div class="go-top"><i class="fa-solid fa-circle-chevron-up"></i></div>
-</body>
-
+  </body>
 </html>
