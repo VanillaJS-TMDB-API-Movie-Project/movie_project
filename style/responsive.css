@@ -1,4 +1,20 @@
 /* responsive */
+@media(max-width:920px){   
+    .movies-detail-list{
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+    }
+
+    .poster-img{
+        overflow: visible;
+    }
+
+    .movies-content{
+        width: 90%;
+    }
+}
+
 @media(max-width:768px){
     .card-ids{
         flex-wrap: wrap;
@@ -13,11 +29,6 @@
         font-size: var(--font-size-sub);
     }
     
-    .movies-detail-list{
-        flex-wrap: wrap;
-        gap: 50px;
-    }
-
     .review-write-inner{
         flex-wrap: wrap;
     }
@@ -48,6 +59,16 @@
     .review-user-form > p > input{
         width: 50%;
     }
+
+    .movies-btn-list{
+        gap: 7px;
+        font-size: 14px;
+    }
+
+    .movies-btn-list li{
+        padding: 5px 15px;
+    }
+
 
 
 
@@ -88,4 +109,15 @@
         margin-bottom: 20px;
     }
 
+    .movies-cast-name ul{
+        font-size: 14px;
+        gap: 10px;
+    }
+    .movies-cast-name ul li .movies-cast-list h3{
+        margin: 5px 0 0;
+    }
+
+    section{
+        padding: 50px 20px 108px;
+    }
 }
