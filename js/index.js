@@ -1,59 +1,31 @@
 import * as movieApi from './api/api.js';
 
 let movieArray = await movieApi.getTopRatedMovieArray(1);
+let isSearchResult = false;
 
 async function makeButtons() {
-    let genreArray = await movieApi.getGenreArray();
-    let $searchForm = document.querySelector("section");
-    let $button;
-    let orders = ['asc', 'desc'];
-    let ordersKor = ['오름차순', '내림차순'];
-    let sorts = ['releaseDate', 'popularity'];
-    let sortsKor = ['출시일', '인기도'];
 
-    for (let i = 0; i < genreArray.length; i++) {
-        let $buttonTag = document.createElement("button");
-
-        $buttonTag.className = `genre-btn`;
-        $buttonTag.id = 'genre-btn' + i;
-        $buttonTag.textContent = genreArray[i]['name'];
-        $searchForm.appendChild($buttonTag);
-    }
-
-    for (let i = 0; i < orders.length; i++) {
-        for (let j = 0; j < sorts.length; j++) {
-            $button = document.createElement("button");
-            $button.textContent = sortsKor[j] + "_" + ordersKor[i];
-            $button.className = 'filter-btn';
-            $button.id = sorts[j] + "_" + orders[i] + '-btn';
-            $searchForm.appendChild($button);
-        }
-    }
-
-    document.querySelectorAll('.genre-btn').forEach(btn => {
-        btn.addEventListener(
-            "click",
-            function () {
-
-                clickGenre(btn.textContent);
-            },
-            false,
-        );
-    });
-
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.addEventListener(
-            "click",
-            function () {
-                clickOrder(btn.id);
+    document.querySelectorAll('.movies-btn-list > li > a').forEach(filter => {
+        filter.addEventListener(
+            "click", (event) => {
+                event.preventDefault();
+                clickFilter(filter.innerHTML);
             }
         )
-    })
+    });
 
     document.querySelector('.movie-search-inner > button').
         addEventListener("click", (event) => {
             event.preventDefault();
             clickSearch();
+        });
+
+    document.querySelector('.logo > a').
+        addEventListener("click", (event) => {
+            event.preventDefault();
+            isSearchResult = false;
+            document.querySelector('.movie-search > input').value = '';
+            showAll();
         });
 
 }
@@ -126,75 +98,96 @@ function setMovies() {
     }
 }
 
-async function clickGenre(genre) {
-    console.log(genre);
-    //movieArray = await movieApi.getTopRatedMovieArray(1);
+function clickFilter(filter) {
+    console.log(filter);
+
+    switch (filter) {
+        case '전체보기':
+            showAll();
+            break;
+        case '인기순':
+            showPopularityOrder();
+            break;
+        case '출시일순':
+            showReleaseDateOrder();
+            break;
+        case '드라마':
+            showDrama();
+            break;
+        case '액션':
+            showAction();
+            break;
+    }
+}
+
+async function showAll() {
+    console.log('전체보기');
+    if (isSearchResult) {
+        clickSearch();
+    }
+    else {
+        movieArray = await movieApi.getTopRatedMovieArray(1);
+        setMovies();
+    }
+}
+
+function showPopularityOrder() {
+    movieArray = movieArray.sort((a, b) => {
+        if (a['popularity'] > b['popularity'])
+            return -1;
+        else if (a['popularity'] < b['popularity'])
+            return 1
+        else
+            return 0;
+    });
+    setMovies();
+    //movieArray.forEach(movie => console.log(movie['title'], movie['popularity']));
+}
+
+function showReleaseDateOrder() {
+    movieArray = movieArray.sort((a, b) => new Date(b['release_date']).getTime() - new Date(a['release_date']).getTime());
+    setMovies();
+    //movieArray.forEach(movie => console.log(movie['title'], movie['release_date']));
+}
+
+async function showDrama() {
+    movieArray = await movieApi.getTopRatedMovieArray(1);
+
     movieArray = movieArray.filter(movie => {
         let matchFlag = false;
 
         movie['genre_ids'].forEach(item => {
-            if (item === genre) {
-                console.log(item);
+            if (item === '드라마') {
                 matchFlag = true;
             }
         });
         return matchFlag;
     });
-    console.log(movieArray);
+    //movieArray.forEach(movie => console.log(movie['title'], movie['genre_ids']));
     setMovies();
 }
 
-function clickOrder(id) {
-    let tempArray = id.split('_');
-    let sort = tempArray[0].replace('releaseDate', 'release_date');
-    let order = tempArray[1].slice(0, tempArray[1].indexOf('-'));
+async function showAction() {
+    movieArray = await movieApi.getTopRatedMovieArray(1);
 
-    if (sort === 'popularity' && order === 'asc') {
-        console.log(sort, '오름차순');
-        movieArray.sort((a, b) => {
-            if (a[sort] > b[sort])
-                return 1;
-            else if (a[sort] < b[sort])
-                return -1
-            else
-                return 0;
+    movieArray = movieArray.filter(movie => {
+        let matchFlag = false;
+
+        movie['genre_ids'].forEach(item => {
+            if (item === '액션') {
+                matchFlag = true;
+            }
         });
-        for (let movie of movieArray)
-            console.log(movie['popularity']);
-    }
-    else if (sort === 'popularity' && order === 'desc') {
-        console.log(sort, '내림차순');
-        movieArray.sort((a, b) => {
-            if (a[sort] > b[sort])
-                return -1;
-            else if (a[sort] < b[sort])
-                return 1
-            else
-                return 0;
-        });
-        for (let movie of movieArray)
-            console.log(movie['popularity']);
-    }
-    else if (sort == 'release_date' && order === 'asc') {
-        console.log(sort, '오름차순');
-        movieArray.sort((a, b) => new Date(a[sort]).getTime() - new Date(b[sort]).getTime());
-
-        for (let movie of movieArray)
-            console.log(movie['release_date']);
-    }
-    else if (sort == 'release_date' && order === 'desc') {
-        console.log(sort, '내림차순');
-        movieArray.sort((a, b) => new Date(b[sort]).getTime() - new Date(a[sort]).getTime());
-
-        for (let movie of movieArray)
-            console.log(movie['release_date']);
-    }
-
+        return matchFlag;
+    });
+    //movieArray.forEach(movie => console.log(movie['title'], movie['genre_ids']));
     setMovies();
 }
 
 async function clickSearch() {
     let $searchText = document.querySelector('.movie-search > input');
+
+    isSearchResult = true;
     movieArray = await movieApi.getSearchArray($searchText.value, 1);
     console.log(movieArray);
     setMovies();
