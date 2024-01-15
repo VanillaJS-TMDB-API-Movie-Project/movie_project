@@ -1,20 +1,4 @@
 /* responsive */
-@media(max-width:920px){   
-    .movies-detail-list{
-        flex-direction: column;
-        align-items: center;
-        gap: 0;
-    }
-
-    .poster-img{
-        overflow: visible;
-    }
-
-    .movies-content{
-        width: 90%;
-    }
-}
-
 @media(max-width:768px){
     .card-ids{
         flex-wrap: wrap;
@@ -68,6 +52,30 @@
     .movies-btn-list li{
         padding: 5px 15px;
     }
+
+    .movies-detail-list{
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        margin-top: 132px;
+    }
+
+    .poster-img{
+        overflow: visible;
+    }
+
+    .movies-content{
+        width: 90%;
+    }
+
+    section.movies-detail{
+        height: 1260px;
+    }
+
+    section.movies-detail > .movies-detail-inner{
+        height: 1260px;
+    }
+    
 }
 
 @media(max-width:600px){
