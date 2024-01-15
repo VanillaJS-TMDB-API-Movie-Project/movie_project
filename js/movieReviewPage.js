@@ -34,8 +34,8 @@ function movieInformation(detailData, castData) {
 }
 
 function movieList(MovieObject) {
-  const moviesContent = document.querySelector(".movies-content");
-  const moviesPoster = document.querySelector(".poster-img");
+  const moviesContent = document.querySelector(".movies-detail");
+  const moviesPoster = document.querySelector(".movies-cast-name-inner");
 
   //각각 영화 정보의 표현방식을 바꿈
   //slice(): 배열 자릿수 표현
@@ -44,26 +44,23 @@ function movieList(MovieObject) {
   const genres = MovieObject.genres.join("/"); //장르
   const releaseDate = MovieObject.releaseDate.replace(/-/g, "."); //개봉일
   const companyName = MovieObject.CompanyName.join("/"); //제작 회사
-  const castName = MovieObject.castName.slice(0, 5).join("/"); //배우 이름
-  const castCharacter = MovieObject.castCharacter //배역
-    .slice(0, 5) //배역 5명만 표현
-    .join("/") // 배열을 문자열로 합칠 때 "/" 구분한다.
-    .replace(/\d/g, ""); //문자열에 숫자가 있을 경우 숫자 제거
+  const castName = MovieObject.castName.slice(0, 5); //배우 이름
+  const castCharacter = MovieObject.castCharacter.slice(0, 5); //배역
   const castProfile = MovieObject.castProfile.slice(0, 5); //배우 프로필
 
   // 배우 프로필 사진 유효성 검사
   const defaultProfile = "../images/image-default.jpeg"; //images 폴더 안에 있는 기본 이미지 설정
   const NullProfile = "https://image.tmdb.org/t/p/original/null"; //api에 없는 이미지 설정
   const tagProfile = castProfile
-    .map((item) => {
+    .map((item, index) => {
       if (item !== NullProfile) {
         return `
         <li class="cast-list">
             <div class="movies-cast-list">
               <img src="${item}" alt="${MovieObject.title}">
               <div class="movies-cast-title">
-                <h3>${castName}</h3>
-                <p>${castCharacter}</p>
+                <h3>${castName[index]}</h3>
+                <p>${castCharacter[index]}</p>
               </div>
             </div>
         </li>
@@ -73,49 +70,33 @@ function movieList(MovieObject) {
       }
     })
     .join(""); //프로필 마다(,)쉼표가 표시되어 삭제
-
-  // const temp = `
-  //   <h2>${MovieObject.title}</h2>
-  //   <p>${MovieObject.overview}</p>
-  //   <p>${MovieObject.vote}</p>
-  //   <p>${MovieObject.runtime}분</p>
-  //   <p>${releaseDate}</p>
-  //   <p>${genres}</p>
-  //   <p>배우</p>
-  //   <p>${castName}</p>
-  //   <p>배역</p>
-  //   <p>${castCharacter}</p>
-  //   <p>제작 회사</p>
-  //   <p>${companyName}</p>
-  // `;
-//   const temp = `
-//   <div class="movies-detail-inner">
-//   <a href="../index.html"><i class="fa-solid fa-arrow-left"></i></a>
-//   <img src="${MovieObject.backdropImg}" alt="${MovieObject.title}" />
-//   <div class="movies-detail-list">
-//     <div class="poster-img">
-//       <img src="${MovieObject.posterImg}" alt="${MovieObject.title}" />
-//     </div>
-//     <div class="movies-content">
-//       <ul>
-//         <li>
-//         <h2>${MovieObject.title}</h2>
-//         <p>${MovieObject.vote}</p>
-//         <p>${releaseDate}</p>
-//         <p>${MovieObject.runtime}분</p>
-//         <p class="movies-contents">${MovieObject.overview}</p>
-//         </li>
-//       </ul>
-//     </div>
-// </div>
-// </div>
-// `;
+  const temp = `
+  <div class="movies-detail-inner">
+  <a href="../index.html"><i class="fa-solid fa-arrow-left"></i></a>
+  <img src="${MovieObject.backdropImg}" alt="${MovieObject.title}" />
+  <div class="movies-detail-list">
+    <div class="poster-img">
+      <img src="${MovieObject.posterImg}" alt="${MovieObject.title}" />
+    </div>
+    <div class="movies-content">
+      <ul>
+        <li>
+        <h2>${MovieObject.title}</h2>
+        <p>${MovieObject.vote}</p>
+        <p>${releaseDate}</p>
+        <p>${MovieObject.runtime}분</p>
+        <p class="movies-contents">${MovieObject.overview}</p>
+        </li>
+      </ul>
+    </div>
+</div>
+</div>
+`;
 
   // const poster = `<img src="${MovieObject.posterImg}" alt="${MovieObject.title}" />
   // <img src="${MovieObject.backdropImg}" alt="${MovieObject.title}" />`;
 
   // html 태그 적용
   moviesContent.innerHTML = temp;
-  // moviesPoster.innerHTML = poster;
-  // moviesContent.innerHTML += tagProfile;
+  moviesPoster.innerHTML = tagProfile;
 }
