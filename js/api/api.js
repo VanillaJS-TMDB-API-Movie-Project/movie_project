@@ -175,8 +175,6 @@ export async function getDetailedMovie(id) {
         isoCode[movie["spoken_languages"][i]["iso_639_1"]];
     }
 
-    console.log(movie);
-
     return movie;
   }
 }
