@@ -67,11 +67,13 @@ userGrade.addEventListener('click', function (e) {
 /* 로컬 스토리지에 저장된 모든 데이터를 가져와서 출력 */
 function allUserData(){
     userList.innerHTML = '';
-    const userKeys = Object.keys(localStorage); //localStorage객체의 키들을 배열로 반환해줌
+    let userKeys = Object.keys(localStorage); //localStorage객체의 키들을 배열로 반환해줌
+     // 키를 숫자로 변환한 배열을 정렬
+    userKeys = userKeys.sort((a, b) => parseInt(b) - parseInt(a));
+    
     for (let i = 0; i < userKeys.length; i++) {
         const key = userKeys[i];
         const userData = JSON.parse(localStorage.getItem(key)); //user고유의 번호를 다시 불러옴
-        userKeys.sort((a, b) => a['timeStamp'] - b['timeStamp']);
         // 각 데이터에 대한 HTML 생성
         const user_html = `
             <li class="user-review-list">
