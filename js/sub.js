@@ -8,68 +8,91 @@ const userListItem = userList.querySelectorAll('li');
 
 allUserData(); //처음 로드시 내가 추가한 영화리뷰 출력해서 보여주는 함수
 
+const urlParams = new URLSearchParams(window.location.search); //url에 있는걸 id를 빼옴
+const moviesId = urlParams.get('id');
+// console.log(moviesId);
+
 //관람평등록을 추가했을때 user가 쓴 관람평 내용을 등록 하고 localStorage에 넣기
-userGrade.addEventListener('click', function (e) {
-    e.preventDefault();
-    const userTextResult = userTextarea.value;
-    const userNameResult = userName.value;
-    const userNamePassWord = userPassWord.value;
-    const timeStamp = new Date().getTime();
-    // console.log(timeStamp);
+if(userGrade){
+    userGrade.addEventListener('click', function (e) {
+        e.preventDefault();
 
-    // 입력된 값을 객체로 저장"
-    const userData = {
-        user : userNameResult,
-        content : userTextResult,
-        password : userNamePassWord,
-        userId : timeStamp
-    };
-    // console.log(userTextResult, userNameResult, userNamePassWord);
-    const validationTxt = document.querySelector('.user-txt');
-    const validationName = document.querySelector('.valiname');
-    const validationPw = document.querySelector('.valipw');
+        // 영화 ID 설정
+        const urlParams = new URLSearchParams(window.location.search);
+        const moviesId = urlParams.get('id');
 
-    if(userTextResult && userNameResult && userNamePassWord){
-        //데이터 저장
-        localStorage.setItem(timeStamp, JSON.stringify(userData)); //객체를 문자열로 변환해서 올림
-        // const UserData = JSON.parse(localStorage.getItem(timeStamp)); //user 고유의 번호를 다시 불러옴
-        allUserData(); //로컬스토리지에 있는 내용을 읽어와서, 웹페이지에 뿌리기    
-        
-        //폼 내용 비우기 및 에러 클래스 제거하기
-        validationTxt.classList.remove('error');
-        validationName.classList.remove('error');
-        validationPw.classList.remove('error');
+        const userTextResult = userTextarea.value;
+        const userNameResult = userName.value;
+        const userNamePassWord = userPassWord.value;
+        const timeStamp = new Date().getTime();
+    
+        // console.log(timeStamp);
+    
+        // 입력된 값을 객체로 저장"
+        const userData = {
+            user : userNameResult,
+            content : userTextResult,
+            password : userNamePassWord,
+            userId : timeStamp,
+            moviesId : moviesId
+        };
 
-        userTextarea.value = '';
-        userName.value = '';
-        userPassWord.value = ''; 
 
-    //빈값은 validation 메세지 추가
-    }else{
-        if(userTextResult === ''){
-            validationTxt.classList.add('error');
-        }else{
+        // console.log(userTextResult, userNameResult, userNamePassWord);
+        const validationTxt = document.querySelector('.user-txt');
+        const validationName = document.querySelector('.valiname');
+        const validationPw = document.querySelector('.valipw');
+    
+        if(userTextResult && userNameResult && userNamePassWord){
+            //데이터 저장
+            localStorage.setItem(timeStamp, JSON.stringify(userData)); //객체를 문자열로 변환해서 올림
+            // const UserData = JSON.parse(localStorage.getItem(timeStamp)); //user 고유의 번호를 다시 불러옴
+            allUserData(); //로컬스토리지에 있는 내용을 읽어와서, 웹페이지에 뿌리기    
+            
+            //폼 내용 비우기 및 에러 클래스 제거하기
             validationTxt.classList.remove('error');
-        }
-        if(userNameResult === ''){
-            validationName.classList.add('error');
-        }else{
             validationName.classList.remove('error');
-        }
-        if(userNamePassWord === ''){
-            validationPw.classList.add('error');
-        }else{
             validationPw.classList.remove('error');
+    
+            userTextarea.value = '';
+            userName.value = '';
+            userPassWord.value = ''; 
+    
+        //빈값은 validation 메세지 추가
+        }else{
+            if(userTextResult === ''){
+                validationTxt.classList.add('error');
+            }else{
+                validationTxt.classList.remove('error');
+            }
+            if(userNameResult === ''){
+                validationName.classList.add('error');
+            }else{
+                validationName.classList.remove('error');
+            }
+            if(userNamePassWord === ''){
+                validationPw.classList.add('error');
+            }else{
+                validationPw.classList.remove('error');
+            }
         }
-    }
-});
+    });
+}
 
 /* 로컬 스토리지에 저장된 모든 데이터를 가져와서 출력 */
 function allUserData(){
+    const urlParams = new URLSearchParams(window.location.search);  //초기화
+    const moviesId = urlParams.get('id');
     userList.innerHTML = '';
-    let userKeys = Object.keys(localStorage); //localStorage객체의 키들을 배열로 반환해줌
-     // 키를 숫자로 변환한 배열을 정렬
+
+    let userKeys = Object.keys(localStorage).filter(key => {
+        const userData = JSON.parse(localStorage.getItem(key));
+        return userData.moviesId === moviesId;
+    });
+    console.log(moviesId);
+
     userKeys = userKeys.sort((a, b) => parseInt(b) - parseInt(a));
+    // const UserData = JSON.parse(localStorage.getItem(userData.timeStamp));
     
     for (let i = 0; i < userKeys.length; i++) {
         const key = userKeys[i];
