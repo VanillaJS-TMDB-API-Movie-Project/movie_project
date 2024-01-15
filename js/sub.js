@@ -71,7 +71,7 @@ function allUserData(){
     for (let i = 0; i < userKeys.length; i++) {
         const key = userKeys[i];
         const userData = JSON.parse(localStorage.getItem(key)); //user고유의 번호를 다시 불러옴
-
+        userKeys.sort((a, b) => a['timeStamp'] - b['timeStamp']);
         // 각 데이터에 대한 HTML 생성
         const user_html = `
             <li class="user-review-list">
