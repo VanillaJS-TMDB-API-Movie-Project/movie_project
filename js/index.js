@@ -93,7 +93,6 @@ function setMovies() {
         else if (movie['backdrop_path'].indexOf('null') !== -1) {
             return false;
         }
-
         return true;
     });
 
@@ -101,8 +100,14 @@ function setMovies() {
     let $posterImages = document.querySelectorAll('li > a > div > img');
     let $reviewSrc = document.querySelectorAll('.movie-list > a');
     let $titles = document.querySelectorAll('.movies-title');
+    let $searchResult = document.querySelector('.list-none');
 
-    console.log($reviewSrc);
+    if (movieArray.length !== 0) {
+        $searchResult.style.display = 'none';
+    }
+    else {
+        $searchResult.style.display = 'block';
+    }
 
     for (let i = 0; i < movieArray.length; i++) {
         let url = new URL(window.location.href);
@@ -123,7 +128,7 @@ function setMovies() {
 
 async function clickGenre(genre) {
     console.log(genre);
-    movieArray = await movieApi.getTopRatedMovieArray(1);
+    //movieArray = await movieApi.getTopRatedMovieArray(1);
     movieArray = movieArray.filter(movie => {
         let matchFlag = false;
 
