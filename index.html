@@ -18,6 +18,7 @@
     <script src="https://kit.fontawesome.com/53932b056b.js" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/responsive.css">
     <script type="module" src="js/common.js"></script>
     <script type="module" src="js/api/api.js" defer></script>
     <script type="module" src="js/index.js" defer></script>
@@ -33,14 +34,23 @@
                 <h2>영화 검색 : </h2>
                 <div class="movie-search">
                     <input type="text" id="search-text" placeholder="영화 제목을 입력해 주세요." autofocus>
-                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <!-- <i class="fa-solid fa-magnifying-glass"></i> -->
                 </div>
                 <button id="search-btn">검색하기</button>
             </form>
         </nav>
     </header>
     <main>
-        <section>
+        <section class="movies-btn-wrapper">
+            <div class="movies-btn">
+                <ul class="movies-btn-list">
+                    <li class="active"><a href="">전체보기</a></li>
+                    <li><a href="">인기순</a></li>
+                    <li><a href="">출시일순</a></li>
+                    <li><a href="">드라마</a></li>
+                    <li><a href="">액션</a></li>
+                </ul>
+            </div>
             <div class="card-inner">
                 <ul class="card-list">
                 </ul>

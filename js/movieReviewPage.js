@@ -57,33 +57,65 @@ function movieList(MovieObject) {
   const tagProfile = castProfile
     .map((item) => {
       if (item !== NullProfile) {
-        return `<img src="${item}" alt="${MovieObject.title}"/>`;
+        return `
+        <li class="cast-list">
+            <div class="movies-cast-list">
+              <img src="${item}" alt="${MovieObject.title}">
+              <div class="movies-cast-title">
+                <h3>${castName}</h3>
+                <p>${castCharacter}</p>
+              </div>
+            </div>
+        </li>
+        `;
       } else {
         return `<img src="${defaultProfile}" alt="${MovieObject.title}" />`;
       }
     })
     .join(""); //프로필 마다(,)쉼표가 표시되어 삭제
 
+  // const temp = `
+  //   <h2>${MovieObject.title}</h2>
+  //   <p>${MovieObject.overview}</p>
+  //   <p>${MovieObject.vote}</p>
+  //   <p>${MovieObject.runtime}분</p>
+  //   <p>${releaseDate}</p>
+  //   <p>${genres}</p>
+  //   <p>배우</p>
+  //   <p>${castName}</p>
+  //   <p>배역</p>
+  //   <p>${castCharacter}</p>
+  //   <p>제작 회사</p>
+  //   <p>${companyName}</p>
+  // `;
   const temp = `
-    <h2>${MovieObject.title}</h2>
-    <p>${MovieObject.overview}</p>
-    <p>${MovieObject.vote}</p>
-    <p>${MovieObject.runtime}분</p>
-    <p>${releaseDate}</p>
-    <p>${genres}</p>
-    <p>배우</p>
-    <p>${castName}</p>
-    <p>배역</p>
-    <p>${castCharacter}</p>
-    <p>제작 회사</p>
-    <p>${companyName}</p>
-  `;
+  <div class="movies-detail-inner">
+  <a href="../index.html"><i class="fa-solid fa-arrow-left"></i></a>
+  <img src="${MovieObject.backdropImg}" alt="${MovieObject.title}" />
+  <div class="movies-detail-list">
+    <div class="poster-img">
+      <img src="${MovieObject.posterImg}" alt="${MovieObject.title}" />
+    </div>
+    <div class="movies-content">
+      <ul>
+        <li>
+        <h2>${MovieObject.title}</h2>
+        <p>${MovieObject.vote}</p>
+        <p>${releaseDate}</p>
+        <p>${MovieObject.runtime}분</p>
+        <p class="movies-contents">${MovieObject.overview}</p>
+        </li>
+      </ul>
+    </div>
+</div>
+</div>
+`;
 
   const poster = `<img src="${MovieObject.posterImg}" alt="${MovieObject.title}" />
   <img src="${MovieObject.backdropImg}" alt="${MovieObject.title}" />`;
 
   // html 태그 적용
   moviesContent.innerHTML = temp;
-  moviesPoster.innerHTML = poster;
-  moviesContent.innerHTML += tagProfile;
+  // moviesPoster.innerHTML = poster;
+  // moviesContent.innerHTML += tagProfile;
 }
