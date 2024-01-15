@@ -6,14 +6,14 @@ let isSearchResult = false; // 검색 결과를 보여주고 있는지 여부
 //필터 버튼들 만들고 이벤트 등록
 async function makeButtons() {
 
-    document.querySelectorAll('.movies-btn-list > li > a').forEach(filter => {
-        filter.addEventListener(
-            "click", (event) => {
-                event.preventDefault();
-                clickFilter(filter.innerHTML);
-            }
-        )
-    });
+    // document.querySelectorAll('.movies-btn-list > li > a').forEach(filter => {
+    //     filter.addEventListener(
+    //         "click", (event) => {
+    //             event.preventDefault();
+    //             clickFilter(filter.innerHTML);
+    //         }
+    //     )
+    // });
 
     document.querySelector('.movie-search-inner > button').
         addEventListener("click", (event) => {
@@ -101,27 +101,42 @@ function setMovies() {
     }
 }
 
-//필터 버튼을 클릭했을 때 필터에 걸러진 결과들을 출력
-function clickFilter(filter) {
+// function clickFilter(filter) {
+//     console.log(filter);
+    
 
-    switch (filter) {
-        case '전체보기':
-            showAll();
-            break;
-        case '인기순':
-            showPopularityOrder();
-            break;
-        case '출시일순':
-            showReleaseDateOrder();
-            break;
-        case '드라마':
-            showDrama();
-            break;
-        case '액션':
-            showAction();
-            break;
-    }
-}
+//     tabMenu.addEventListener('click', function (e) {
+//         let targetItem = e.target.closest('li > a');
+
+//         if (targetItem) {
+//             e.preventDefault();
+
+//             tabMenu.querySelectorAll('li').forEach((item) => {
+//                 item.classList.remove('active');
+//             });
+
+//             targetItem.closest('li').classList.add('active');
+
+//             switch (filter) {
+//                 case '전체보기':
+//                     showAll();
+//                     break;
+//                 case '인기순':
+//                     showPopularityOrder();
+//                     break;
+//                 case '출시일순':
+//                     showReleaseDateOrder();
+//                     break;
+//                 case '드라마':
+//                     showDrama();
+//                     break;
+//                 case '액션':
+//                     showAction();
+//                     break;
+//             }
+//         }
+//     });
+// }
 
 //필터에 걸러지기 전의 모든 영화정보들을 출력
 async function showAll() {
@@ -219,6 +234,40 @@ async function clickSearch() {
 function init() {
     makeButtons();
     makeCards();
+
+    // 클릭 이벤트 리스너 등록
+    let tabMenu = document.querySelector('.movies-btn-list');
+    tabMenu.addEventListener('click', function (e) {
+        let targetItem = e.target.closest('li > a');
+
+        if (targetItem) {
+            e.preventDefault();
+
+            tabMenu.querySelectorAll('li').forEach((item) => {
+                item.classList.remove('active');
+            });
+
+            targetItem.closest('li').classList.add('active');
+
+            switch (targetItem.innerHTML) {
+                case '전체보기':
+                    showAll();
+                    break;
+                case '인기순':
+                    showPopularityOrder();
+                    break;
+                case '출시일순':
+                    showReleaseDateOrder();
+                    break;
+                case '드라마':
+                    showDrama();
+                    break;
+                case '액션':
+                    showAction();
+                    break;
+            }
+        }
+    });
 }
 
 //사이트를 로딩하기 전에 초기화 과정을 끝냄
