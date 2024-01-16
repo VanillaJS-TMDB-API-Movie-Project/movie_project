@@ -1,3 +1,12 @@
+## Team members
+|김명환|박서영|안주원|이준구|
+|:----:|:----:|:----:|:----:|
+|<br>**Features**<br><br>TMDB api 연결<br>메인페이지 검색 필터링<br>|<br>**Features**<br><br>메인페이지 퍼블리싱<br>서브페이지 퍼블리싱<br>메인페이지 필터 버튼 active 구현<br>버튼 스크롤 구현<br>관람평등록 CRUD구현<br>CRUD 벨리데이션 구현<br>카드 각각ID 관람평등록 구현<br>파비콘 디자인<br>&nbsp;|<br>**Features**<br><br>메인페이지 검색 벨리데이션 구현|**Features**<br><br>카드리스트 상세페이지 이동 api 구현|
+
+<br>
+<br>
+<br>
+
 # Movie Website Project in TMDB API
 ![스크린샷 2024-01-15 오후 12 28 54](https://github.com/seokachu/movie_project/assets/116704646/2a945135-aa54-4466-8c7e-99dc5d2952bd)
 
@@ -66,14 +75,7 @@
 <br>
 <br>
 
-## Team members
-|김명환|박서영|안주원|이준구|
-|:----:|:----:|:----:|:----:|
-|<br>**Features**<br><br>TMDB api 연결<br>메인페이지 검색 필터링<br>|<br>**Features**<br><br>메인페이지 퍼블리싱<br>서브페이지 퍼블리싱<br>메인페이지 필터 버튼 active 구현<br>버튼 스크롤 구현<br>관람평등록 CRUD구현<br>CRUD 벨리데이션 구현<br>카드 각각ID 관람평등록 구현<br>파비콘 디자인<br>&nbsp;|<br>**Features**<br><br>메인페이지 검색 벨리데이션 구현|**Features**<br><br>카드리스트 상세페이지 이동 api 구현|
 
-<br>
-<br>
-<br>
 
 ## Tools
 Communication
