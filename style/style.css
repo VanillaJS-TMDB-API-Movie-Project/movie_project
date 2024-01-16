@@ -199,7 +199,7 @@ section.movies-btn-wrapper{
     border-radius: 30px;
     white-space: nowrap;
     text-align: center;
-    cursor: pointer;
+    transition: 0.3s ease-out;
 }
 
 .movies-btn-list li a{
@@ -364,7 +364,7 @@ section.movies-detail > .movies-detail-inner > img{
 .review-write{
     position: relative;
     padding: 30px;
-    background-color: #e0e0e0;
+    background-color: #eee;
     border-radius: 15px;
     width: 100%;
 }
@@ -376,7 +376,7 @@ section.movies-detail > .movies-detail-inner > img{
     top: 100%;
     border-width:20px;
     border-style:solid;
-    border-color: #e0e0e0 transparent transparent transparent;
+    border-color: #eee transparent transparent transparent;
     transform-origin: center center;
 }
 
@@ -424,6 +424,7 @@ textarea::placeholder{
     height: 80px;
     border-radius: 5px;
     cursor: pointer;
+    background-color: #fff;
 }
 
 .user-control{
