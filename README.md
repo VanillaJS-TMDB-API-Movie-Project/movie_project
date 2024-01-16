@@ -43,6 +43,10 @@
 
 `OGP` : 메타태그를 사용하여 검색엔진 seo 최적화.
 
+
+![스크린샷 2024-01-16 오전 10 08 29](https://github.com/seokachu/movie_project/assets/116704646/b2c0a1bd-80fc-42d8-ae0c-06785248571f)
+
+
 <br>
 <br>
 <br>
